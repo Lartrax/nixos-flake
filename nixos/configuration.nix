@@ -28,6 +28,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -105,6 +106,10 @@
     firefox
     # networkmanagerapplet
     networkmanagerapplet
+    # File manager
+    kdePackages.dolphin
+    kdePackages.qtsvg
+    kdePackages.kio-admin
   ];
 
   environment.sessionVariables = {
@@ -141,6 +146,11 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # Automount/unmount drives
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
