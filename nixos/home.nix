@@ -24,7 +24,7 @@ in
   # targets.genericLinux.enable = true; # ENABLE THIS ON NON NIXOS
 
   home.packages = [
-    pkgs.hello
+    # pkgs.hell
   ];
 
   home.sessionVariables = {
@@ -122,6 +122,7 @@ in
       };
 
       misc = {
+        force_default_wallpaper = 2;
         disable_splash_rendering = true;
       };
 

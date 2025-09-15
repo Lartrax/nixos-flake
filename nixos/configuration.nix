@@ -39,6 +39,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
@@ -110,6 +111,8 @@
     kdePackages.dolphin
     kdePackages.qtsvg
     kdePackages.kio-admin
+    # Git gui
+    lazygit
   ];
 
   environment.sessionVariables = {
