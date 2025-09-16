@@ -2,21 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
-  
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = {
-      nixy = import ./home.nix;
-    };
+    users = { nixy = import ./home.nix; };
   };
 
   # Hardware
@@ -63,7 +60,7 @@
   services.xserver.xkb = {
     layout = "no";
     variant = "";
-      # Ignore maximize requests from apps
+    # Ignore maximize requests from apps
   };
 
   # Configure console keymap
@@ -74,7 +71,7 @@
     isNormalUser = true;
     description = "Lars Erik Nordbø";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    # packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -83,13 +80,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    # Topbar
     waybar
-    (waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-    )
     # Notification daemon
     mako
     libnotify
@@ -115,9 +109,7 @@
     lazygit
   ];
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   fonts = {
     packages = with pkgs; [ nerd-fonts.monaspace ];
@@ -125,8 +117,8 @@
     fontconfig = {
       defaultFonts = {
         serif = [ "Monaspace Xenon Nerd Font" ];
-	sansSerif = [ "Monaspace Argon Nerd Font" ];
-	monospace = [ "Monaspace Neon Nerd Font" ];
+        sansSerif = [ "Monaspace Argon Nerd Font" ];
+        monospace = [ "Monaspace Neon Nerd Font" ];
       };
     };
   };
