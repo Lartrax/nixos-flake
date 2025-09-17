@@ -107,6 +107,8 @@
     kdePackages.kio-admin
     # Git gui
     lazygit
+    # System info
+    fastfetch
   ];
 
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
@@ -116,9 +118,9 @@
 
     fontconfig = {
       defaultFonts = {
-        serif = [ "Monaspace Xenon Nerd Font" ];
-        sansSerif = [ "Monaspace Argon Nerd Font" ];
-        monospace = [ "Monaspace Neon Nerd Font" ];
+        serif = [ "MonaspiceXe Nerd Font Propo" ];
+        sansSerif = [ "MonaspiceAr Nerd Font Propo" ];
+        monospace = [ "MonaspiceNe Nerd Font Propo" ];
       };
     };
   };

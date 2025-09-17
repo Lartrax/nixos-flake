@@ -57,13 +57,29 @@ in {
       "$menu" = "rofi -show drun -show-icons";
 
       # Environment variables
-      env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
+      env = [
+        "GTK_THEME,Catppuccin-Dark-Frappe"
+        "CURSOR_THEME,catppuccin-frappe-dark-cursors"
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+        "GDK_BACKEND,wayland,x11"
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "SDL_VIDEODRIVER,wayland"
+        "CLUTTER_BACKEND,wayland"
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "GBM_BACKEND,nvidia-drm"
+      ];
 
       # Look and feel
       general = {
         gaps_in = 2;
         gaps_out = 7;
-
         border_size = 2;
 
         "col.active_border" = "rgba(D75BC1ff) rgba(EB9592ff) 45deg";
@@ -71,32 +87,29 @@ in {
 
         resize_on_border = true;
 
-        allow_tearing = false;
-
         layout = "dwindle";
       };
 
       group = {
         "col.border_active" = "rgba(DC7BC1ff) rgba(EB9592ff) 45deg";
-        "col.border_inactive" = "rgba(C49AE5cc) rgba(C89DE6cc) 45deg";
+        "col.border_inactive" = "rgba(C49AE5ff) rgba(C89DE6ff) 45deg";
         "col.border_locked_active" = "rgba(FFFFFFff) rgba(FFFFFFff) 45deg";
         "col.border_locked_inactive" = "rgba(FFFFFFcc) rgba(FFFFFFcc) 45deg";
       };
 
       decoration = {
         rounding = 10;
-        # rounding_power = 2;
 
         # Change transparency of focused and unfocused windows
-        active_opacity = 0.95;
-        inactive_opacity = 0.9;
+        active_opacity = 0.9;
+        inactive_opacity = 0.85;
 
         shadow = {
           enabled = true;
           ignore_window = true;
           range = 14;
           render_power = 2;
-          color = "rgba(ffffffff)";
+          color = "rgba(FFFFFF80)";
           offset = "0 0";
         };
 
@@ -107,7 +120,6 @@ in {
           new_optimizations = true;
           ignore_opacity = true;
           xray = false;
-          # vibrancy = 0.1696;
         };
       };
 
