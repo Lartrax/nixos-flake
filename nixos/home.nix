@@ -117,13 +117,14 @@ in {
           enabled = true;
           size = 4;
           passes = 4;
+          noise = 2.0e-2;
           new_optimizations = true;
           ignore_opacity = true;
           xray = false;
         };
       };
 
-      layerrule = [ "blur,waybar" "blurpopups,waybar" ];
+      layerrule = [ "blur,waybar" "blurpopups,waybar" "blur,rofi" "blur,mako" ];
 
       animations = {
         enabled = true;
@@ -155,14 +156,21 @@ in {
       # Keybinds
       "$mainMod" = "SUPER";
       bind = [
-        "$mainMod, Q, exec, $terminal"
         "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
+        "$mainMod, delete, exit,"
+        "$mainMod, F, togglefloating,"
+        "ALT, return, fullscreen,"
+        "$mainMod, J, togglesplit,"
+        # "$mainMod, P, pseudo,"
+
+        "$mainMod, Q, exec, $terminal"
         "$mainMod, E, exec, $fileManager"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, $menu"
-        "$mainMod, P, pseudo," # dwindle
-        "$mainMod, J, togglesplit," # dwindle
+        "CTRL, space, exec, $menu"
+        "$mainMod, L, exec, hyprlock"
+        # Dismiss notification
+        "$mainMod, R, exec, makoctl dismiss"
+        # Screenshot snippet
+        ''$mainMod, S, exec, grim -g "$(slurp -w 0)" - | satty -f - -o''
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"
@@ -201,6 +209,22 @@ in {
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+
+        # Move windows with mainMod + SHIFT + h/j/k/l
+        "$mainMod SHIFT, j, movewindow, u"
+        "$mainMod SHIFT, k, movewindow, d"
+        "$mainMod SHIFT, h, movewindow, l"
+        "$mainMod SHIFT, l, movewindow, r"
+
+        # Resize window
+        "$mainMod ALT, right, resizeactive, 24 0"
+        "$mainMod ALT, left, resizeactive, -24 0"
+        "$mainMod ALT, up, resizeactive, 0 24"
+        "$mainMod ALT, down, resizeactive, 0 -24"
+
+        # Move workspace to monitor
+        "$mainMod SHIFT ALT, h, movecurrentworkspacetomonitor, -1"
+        "$mainMod SHIFT ALT, l, movecurrentworkspacetomonitor, 1"
       ];
 
       bindm = [
