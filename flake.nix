@@ -18,10 +18,26 @@
     in {
 
       nixosConfigurations = {
-        myNixos = nixpkgs.lib.nixosSystem {
+        desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system; };
 
-          modules = [ ./nixos/configuration.nix ];
+          modules = [
+            ./hosts/desktop/configuration.nix
+            ./modules/defaults.nix
+            ./modules/fonts/monaspace.nix
+            ./modules/audio.nix
+            ./modules/nvidia.nix
+          ];
+        };
+        laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system; };
+
+          modules = [
+            ./hosts/laptop/configuration.nix
+            ./modules/defaults.nix
+            ./modules/fonts/monaspace.nix
+            ./modules/audio.nix
+          ];
         };
       };
 
