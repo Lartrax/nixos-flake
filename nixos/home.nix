@@ -208,8 +208,8 @@ in {
 
       # Input
       input = {
-        kb_layout = "hdc,no";
-        kb_options = "grp:super_space_toggle";
+        kb_layout = "no,hdc";
+        kb_options = "grp:alt_shift_toggle";
 
         follow_mouse = 1;
 
