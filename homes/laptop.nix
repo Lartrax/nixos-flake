@@ -6,8 +6,8 @@
 
     ./apps/firefox.nix
     ./apps/dolphin.nix
+    ./apps/kitty.nix
 
-    ./cli-tools/kitty.nix
     ./cli-tools/fastfetch.nix
     ./cli-tools/git.nix
 
