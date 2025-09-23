@@ -5,12 +5,13 @@
 
   home.file.".config/rofi/colors.rasi".text = ''
     * {
-        background:     #D9D0E3B3;
-        background-alt: #928AA5E6;
+        background:     #EEEEEE88;
+        background-alt: #D9D0E380;
         foreground:     #3C2952E6;
         selected:       #3A436B80;
         active:         #CCD5FFE6;
         urgent:         #A7B9E1E6;
+        border:         #00000011;
     }
   '';
 
@@ -31,7 +32,7 @@
     @import                          "./colors.rasi"
 
     * {
-        border-colour:               var(selected);
+        border-colour:               var(border);
         handle-colour:               var(selected);
         background-colour:           var(background);
         foreground-colour:           var(foreground);
@@ -62,17 +63,17 @@
         transparency:                "real";
         location:                    center;
         anchor:                      center;
-        fullscreen:                  false;
+        fullscreen:                  true;
         width:                       600px;
         x-offset:                    0px;
         y-offset:                    0px;
 
         /* properties for all widgets */
         enabled:                     true;
-        margin:                      0px;
+        margin:                      400px 800px;
         padding:                     0px;
-        border:                      0px solid;
-        border-radius:               10px;
+        border:                      1px solid;
+        border-radius:               20px;
         border-color:                @border-colour;
         cursor:                      "default";
         background-color:            @background-colour;
@@ -164,7 +165,7 @@
         reverse:                     false;
         fixed-height:                true;
         fixed-columns:               true;
-        
+
         spacing:                     5px;
         margin:                      0px;
         padding:                     0px;
@@ -176,7 +177,7 @@
         cursor:                      "default";
     }
     scrollbar {
-        handle-width:                5px ;
+        handle-width:                5px;
         handle-color:                @handle-colour;
         border-radius:               10px;
         background-color:            @alternate-background;
@@ -188,7 +189,7 @@
         spacing:                     10px;
         margin:                      0px;
         padding:                     5px 10px;
-        border:                      0px solid;
+        border:                      1px solid;
         border-radius:               10px;
         border-color:                @border-colour;
         background-color:            transparent;
