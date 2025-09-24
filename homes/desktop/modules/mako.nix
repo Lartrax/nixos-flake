@@ -7,7 +7,7 @@
     font=MonaspiceAr Nerd Font Propo 11
     background-color=#D9D0E3DD
     text-color=#3A436B80
-    width=200
+    width=300
     height=300
     border-color=#14141420
     border-radius=10
