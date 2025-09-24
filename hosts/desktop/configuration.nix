@@ -11,11 +11,6 @@
     users = { nixy = import ../../homes/desktop.nix; };
   };
 
-  hardware = {
-    graphics.enable = true;
-    nvidia.modesetting.enable = true;
-  };
-
   networking.hostName = "nixos-desktop";
 
   users.users.nixy = {
