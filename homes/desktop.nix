@@ -4,7 +4,7 @@
   imports = [
     ./desktop/hyprland.nix
 
-    ./apps/firefox.nix
+    ./apps/brave.nix
     ./apps/dolphin.nix
     ./apps/kitty.nix
     ./apps/easyeffects.nix
