@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager = {
@@ -13,7 +14,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, chaotic, home-manager, hyprland }@inputs:
+  outputs = { self, nixpkgs, nixos-wsl, chaotic, home-manager, hyprland }@inputs:
     let system = "x86_64-linux";
 
     in {
@@ -41,6 +42,14 @@
             ./modules/fonts/monaspace.nix
             ./modules/audio.nix
             ./modules/kernels/linux-latest.nix
+          ];
+        };
+        wsl = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system; };
+          
+          modules = [
+            nixos-wsl.nixosModules.default
+            ./hosts/wsl/configuration.nix
           ];
         };
       };
