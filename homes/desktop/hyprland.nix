@@ -11,7 +11,7 @@ let
     ${pkgs.mako}/bin/mako &
 
     # set wallpaper
-    ${pkgs.swww}/bin/swww img ${../../assets/wallpaper.png} &
+    ${pkgs.swww}/bin/swww img ${../../assets/wallpaper.webp} &
 
     # start wallpaper daemon
     ${pkgs.swww}/bin/swww-daemon
