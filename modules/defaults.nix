@@ -24,8 +24,6 @@
     LC_TIME = "nb_NO.UTF-8";
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     # Editor
     neovim

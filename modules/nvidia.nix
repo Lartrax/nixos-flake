@@ -1,6 +1,13 @@
 { config, ... }:
 
 {
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [ 
+      "nvidia-x11"
+      "nvidia-settings"
+      "nvidia-persistenced"
+    ];
+
   # Enable OpenGL
   hardware.graphics.enable = true;
 
