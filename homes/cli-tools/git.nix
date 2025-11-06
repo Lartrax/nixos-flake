@@ -5,8 +5,11 @@
 
   programs.git = {
     enable = true;
-    userName = "Lartrax";
-    userEmail = "lartrax909@gmail.com";
-    extraConfig = { init.defaultBranch = "main"; };
+    settings = {
+      user.name = "Lartrax";
+      user.email = "lartax909@gmail.com";
+      credential.helper = "cache --timeout=2592000"; # Cache for 30 days
+      init.defaultBranch = "main";
+    };
   };
 }
