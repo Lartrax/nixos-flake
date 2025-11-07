@@ -156,7 +156,7 @@ in {
         # Dismiss notification
         "$mainMod, R, exec, makoctl dismiss"
         # Screenshot snippet
-        ''$mainMod, S, exec, grim -g "$(slurp -w 0)" - | satty -f - -o''
+        # ''$mainMod, S, exec, grim -g "$(slurp -w 0)" - | satty -f - -o''
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"

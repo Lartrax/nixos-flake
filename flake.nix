@@ -14,7 +14,8 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, chaotic, home-manager, hyprland }@inputs:
+  outputs =
+    { self, nixpkgs, nixos-wsl, chaotic, home-manager, hyprland }@inputs:
     let system = "x86_64-linux";
 
     in {
@@ -46,11 +47,9 @@
         };
         wsl = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system; };
-          
-          modules = [
-            nixos-wsl.nixosModules.default
-            ./hosts/wsl/configuration.nix
-          ];
+
+          modules =
+            [ nixos-wsl.nixosModules.default ./hosts/wsl/configuration.nix ];
         };
       };
 

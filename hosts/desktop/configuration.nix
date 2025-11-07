@@ -22,7 +22,8 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    package =
+      inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
   };
 
   # This value determines the NixOS release from which the default
