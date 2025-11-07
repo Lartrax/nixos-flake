@@ -27,6 +27,7 @@
           modules = [
             ./hosts/desktop/configuration.nix
             ./modules/defaults.nix
+            ./modules/bootloader.nix
             ./modules/fonts/monaspace.nix
             ./modules/audio.nix
             ./modules/nvidia.nix
@@ -40,6 +41,7 @@
           modules = [
             ./hosts/laptop/configuration.nix
             ./modules/defaults.nix
+            ./modules/bootloader.nix
             ./modules/fonts/monaspace.nix
             ./modules/audio.nix
             ./modules/kernels/linux-latest.nix
@@ -48,8 +50,11 @@
         wsl = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system; };
 
-          modules =
-            [ nixos-wsl.nixosModules.default ./hosts/wsl/configuration.nix ];
+          modules = [
+            nixos-wsl.nixosModules.default
+            ./hosts/wsl/configuration.nix
+            ./modules/defaults.nix
+          ];
         };
       };
 

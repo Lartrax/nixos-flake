@@ -1,10 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "quiet" ];
-
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
@@ -23,15 +19,6 @@
     LC_TELEPHONE = "nb_NO.UTF-8";
     LC_TIME = "nb_NO.UTF-8";
   };
-
-  environment.systemPackages = with pkgs; [
-    # Editor
-    neovim
-    # Version control
-    git
-    # Git gui
-    lazygit
-  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
