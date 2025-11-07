@@ -11,6 +11,7 @@
 
     ./cli-tools/fastfetch.nix
     ./cli-tools/git.nix
+    ./cli-tools/lazygit.nix
     ./cli-tools/neovim.nix
 
     ./system/keyboard-layouts/hdc.nix
