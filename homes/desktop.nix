@@ -13,6 +13,7 @@
     ./cli-tools/git.nix
     ./cli-tools/lazygit.nix
     ./cli-tools/neovim.nix
+    ./cli-tools/btop-cuda.nix
 
     ./system/keyboard-layouts/hdc.nix
   ];
