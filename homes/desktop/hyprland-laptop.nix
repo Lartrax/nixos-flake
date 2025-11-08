@@ -18,9 +18,9 @@ let
   '';
 in {
   imports = [
-    ./modules/waybar.nix
+    ./modules/waybar-laptop.nix
     ./modules/mako.nix
-    ./modules/rofi.nix
+    ./modules/rofi-laptop.nix
     ./modules/swww.nix
     ./modules/hyprlock.nix
     ./modules/networkmanagerapplet.nix
@@ -211,6 +211,10 @@ in {
         # Move workspace to monitor
         "$mainMod SHIFT ALT, h, movecurrentworkspacetomonitor, -1"
         "$mainMod SHIFT ALT, l, movecurrentworkspacetomonitor, 1"
+
+	# Brightness setting for laptop
+        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+	", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
       ];
 
       bindm = [

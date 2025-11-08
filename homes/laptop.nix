@@ -4,7 +4,7 @@
   imports = [
     ./desktop/hyprland.nix
 
-    ./apps/firefox.nix
+    ./apps/brave.nix
     ./apps/dolphin.nix
     ./apps/kitty.nix
 
@@ -12,6 +12,7 @@
     ./cli-tools/git.nix
     ./cli-tools/lazygit.nix
     ./cli-tools/neovim.nix
+    ./cli-tools/brightnessctl.nix
 
     ./system/keyboard-layouts/hdc.nix
   ];
