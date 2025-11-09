@@ -2,16 +2,18 @@
 
 {
   imports = [
-    ./desktop/hyprland.nix
+    ./desktop/hyprland-laptop.nix
 
     ./apps/brave.nix
     ./apps/dolphin.nix
     ./apps/kitty.nix
+    ./apps/dolphin-emu.nix
 
     ./cli-tools/fastfetch.nix
     ./cli-tools/git.nix
     ./cli-tools/lazygit.nix
     ./cli-tools/neovim.nix
+    ./cli-tools/btop-rocm.nix
     ./cli-tools/brightnessctl.nix
 
     ./system/keyboard-layouts/hdc.nix

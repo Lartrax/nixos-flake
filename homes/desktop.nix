@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./desktop/hyprland.nix
+    ./desktop/hyprland-desktop.nix
 
     ./apps/brave.nix
     ./apps/dolphin.nix
