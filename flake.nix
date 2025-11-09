@@ -46,6 +46,7 @@
             ./modules/audio.nix
             ./modules/graphics.nix
             ./modules/kernels/linux-latest.nix
+            ./modules/automount.nix
           ];
         };
         wsl = nixpkgs.lib.nixosSystem {
