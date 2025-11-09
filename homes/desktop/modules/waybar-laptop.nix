@@ -57,7 +57,7 @@
     }
 
     #workspaces button {
-    	font-size: 20px;
+    	font-size: 18px;
     	box-shadow: none;
     	text-shadow: none;
     	padding: 0px;
@@ -95,7 +95,7 @@
     #custom-wbar,
     #custom-power,
     #tray {
-    	font-size: 16px;
+    	font-size: 14px;
     	color: @main-color;
     	opacity: 0.9;
     	padding-left: 12px;
@@ -117,11 +117,15 @@
     }
 
     #custom-seperator {
-    	color: @tool-color;
+      color: @tool-color;
       font-size: 28px;
       opacity: 0.1;
       padding-left: 12px;
       padding-right: 12px;
+    }
+
+    #battery {
+      font-size: 16px;
     }
   '';
 
@@ -136,9 +140,9 @@
     	"gtk-layer-shell": true,
     	"margin": "0px 0px 0px 0px",
 
-    	"modules-left": ["hyprland/workspaces"],
-    	// "modules-center": ["wlr/taskbar"],
-    	"modules-right": ["memory", "cpu", "custom/seperator", "clock", "network"],
+        "modules-left": ["hyprland/workspaces"],
+        // "modules-center": ["wlr/taskbar"],
+        "modules-right": ["memory", "cpu", "custom/seperator", "clock", "network", "battery"],
 
     	"cpu": {
         "rotate": 90,
@@ -189,7 +193,7 @@
     		"on-click-middle": "close",
     		"ignore-list": ["kitty"],
     		"app_ids-mapping": {
-    			// "firefoxdeveloperedition": "firefox-developer-edition"
+    		// "firefoxdeveloperedition": "firefox-developer-edition"
     		}
     	},
 
@@ -205,6 +209,26 @@
       "custom/seperator": {
         "format": "│",
         "tooltip-format": ""
+      },
+
+      "battery": {
+        "rotate": 270,
+        "interval": 60,
+        "states": {
+          "warning": 30,
+          "critical": 15
+        },
+        "events": {
+          "on-discharging-warning": "notify-send -u normal 'Low Battery'",
+          "on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+          "on-charging-100": "notify-send -u normal 'Battery Full!'"
+        },
+        "format": "{icon}",
+	"format-charging": "󰂄",
+	"format-plugged": "{icon}",
+	"tooltip-format": "{capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "max-length": 25
       }
     }
   '';
