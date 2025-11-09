@@ -44,6 +44,7 @@
             ./modules/bootloader.nix
             ./modules/fonts/monaspace.nix
             ./modules/audio.nix
+            ./modules/graphics.nix
             ./modules/kernels/linux-latest.nix
           ];
         };
