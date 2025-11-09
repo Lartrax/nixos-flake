@@ -8,7 +8,7 @@
     settings = {
       user.name = "Lartrax";
       user.email = "lartax909@gmail.com";
-      credential.helper = "cache --timeout=2592000"; # Cache for 30 days
+      credential.helper = "store";
       init.defaultBranch = "main";
     };
   };
