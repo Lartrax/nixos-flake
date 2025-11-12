@@ -20,7 +20,7 @@
     @define-color wb-act-bg #7c6f64;
     @define-color wb-act-color #504945;
 
-    @define-color wb-hvr-bg rgba(216, 166, 87,0.1);
+    @define-color wb-hvr-bg rgba(216, 166, 87, 0.1);
     @define-color wb-hvr-color #5a524c;
 
     * {
@@ -38,8 +38,9 @@
 
     window#waybar {
     	background: @bar-bg;
-    	border-radius: 12px;
-    	margin-top: 8px;
+      border-radius: 24px;
+      border: solid 1px;
+      border-color: @wb-hvr-bg;
     }
 
     tooltip {
@@ -132,7 +133,7 @@
     	"exclusive": true,
     	"passthrough": false,
     	"gtk-layer-shell": true,
-    	"margin": "8px 8px 4px 8px",
+      "margin": "8px 12px 4px 12px",
 
     	"modules-left": ["hyprland/workspaces"],
     	// "modules-center": ["wlr/taskbar"],
