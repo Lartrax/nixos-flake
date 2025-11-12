@@ -4,7 +4,7 @@
   home.packages = with pkgs; [ waybar ];
 
   home.file.".config/waybar/style.css".text = ''
-    @define-color bar-bg rgba(14, 14, 14, 0.00);
+    @define-color bar-bg rgba(14, 14, 14, 0.02);
 
     @define-color main-color rgba(255, 255, 255, 0.8);
     @define-color main-bg rgba(14, 14, 14, 0);
@@ -33,17 +33,17 @@
     .modules-right {
     	background: @main-bg;
     	padding-left: 16px;
+      padding-right: 16px;
     }
 
     window#waybar {
     	background: @bar-bg;
     	border-radius: 12px;
     	margin-top: 8px;
-
     }
 
     tooltip {
-    	background: @main-bg;
+    	background: @bar-bg;
     	color: @tool-color;
     	border-radius: 16px;
     	padding: 16px;
@@ -97,7 +97,6 @@
     #tray {
     	font-size: 16px;
     	color: @main-color;
-    	opacity: 0.9;
     	padding-left: 12px;
     	padding-right: 12px;
     }
@@ -113,7 +112,7 @@
 
     #window,
     #taskbar {
-    	padding: 0px;
+      padding: 0px;
     }
 
     #custom-seperator {
@@ -130,15 +129,14 @@
     	"layer": "top",
     	"position": "top",
     	"mod": "dock",
-    	"height": 32,
     	"exclusive": true,
     	"passthrough": false,
     	"gtk-layer-shell": true,
-    	"margin": "0px 0px 0px 0px",
+    	"margin": "8px 8px 4px 8px",
 
     	"modules-left": ["hyprland/workspaces"],
     	// "modules-center": ["wlr/taskbar"],
-      "modules-right": ["memory", "cpu", "custom/seperator", "network", "clock"],
+      "modules-right": ["memory", "cpu", "custom/seperator", "network", "custom/seperator", "clock"],
 
     	"cpu": {
         "rotate": 90,
@@ -153,7 +151,7 @@
     		"format-icons": ["░░", "▒░", "▒▒", "▓▒", "▓▓", "█▓", "██"],
     		"max-length": 10,
     		"tooltip": true,
-    		"tooltip-format": " {used:0.1f}GB/{total:0.1f}GB"
+    		"tooltip-format": "{used:0.1f}GB/{total:0.1f}GB"
     	},
 
     	"clock": {

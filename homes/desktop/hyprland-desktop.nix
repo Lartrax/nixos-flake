@@ -109,7 +109,13 @@ in {
         };
       };
 
-      layerrule = [ "blur,waybar" "blurpopups,waybar" "blur,rofi" "blur,mako" ];
+      layerrule = [
+        "ignorealpha 0.01, waybar"
+        "blur, waybar"
+        "blurpopups, waybar"
+        "blur, rofi"
+        "blur, mako"
+      ];
 
       animations = {
         enabled = true;
