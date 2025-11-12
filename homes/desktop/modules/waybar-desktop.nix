@@ -138,7 +138,7 @@
 
     	"modules-left": ["hyprland/workspaces"],
     	// "modules-center": ["wlr/taskbar"],
-    	"modules-right": ["memory", "cpu", "custom/seperator", "clock", "network"],
+      "modules-right": ["memory", "cpu", "custom/seperator", "network", "clock"],
 
     	"cpu": {
         "rotate": 90,

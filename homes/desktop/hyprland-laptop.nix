@@ -212,9 +212,9 @@ in {
         "$mainMod SHIFT ALT, h, movecurrentworkspacetomonitor, -1"
         "$mainMod SHIFT ALT, l, movecurrentworkspacetomonitor, 1"
 
-	# Brightness setting for laptop
+        # Brightness setting for laptop
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-	", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
       ];
 
       bindm = [

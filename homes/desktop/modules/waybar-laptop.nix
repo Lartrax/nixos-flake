@@ -142,7 +142,7 @@
 
         "modules-left": ["hyprland/workspaces"],
         // "modules-center": ["wlr/taskbar"],
-        "modules-right": ["memory", "cpu", "custom/seperator", "clock", "network", "battery"],
+        "modules-right": ["memory", "cpu", "custom/seperator", "network", "battery", "clock"],
 
     	"cpu": {
         "rotate": 90,
@@ -224,9 +224,9 @@
           "on-charging-100": "notify-send -u normal 'Battery Full!'"
         },
         "format": "{icon}",
-	"format-charging": "󰂄",
-	"format-plugged": "{icon}",
-	"tooltip-format": "{capacity}%",
+        "format-charging": "󰂄",
+        "format-plugged": "{icon}",
+        "tooltip-format": "{capacity}%",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "max-length": 25
       }
