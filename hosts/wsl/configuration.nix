@@ -19,6 +19,9 @@
 
   wsl.enable = true;
   wsl.defaultUser = "nixy";
+  wsl.wslConf = {
+    network.hostname = "nixy";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
