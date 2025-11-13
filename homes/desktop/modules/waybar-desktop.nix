@@ -137,7 +137,7 @@
 
     	"modules-left": ["hyprland/workspaces"],
     	// "modules-center": ["wlr/taskbar"],
-      "modules-right": ["memory", "cpu", "custom/seperator", "network", "custom/seperator", "clock"],
+      "modules-right": ["memory", "cpu", "custom/seperator", "network", "pulseaudio", "custom/seperator", "clock"],
 
     	"cpu": {
         "rotate": 90,
@@ -204,6 +204,19 @@
       "custom/seperator": {
         "format": "│",
         "tooltip-format": ""
+      },
+
+      "pulseaudio": {
+        "scroll-step": 2,
+        "format": "  {icon}",
+        "format-bluetooth": "  {icon} ",
+        "format-bluetooth-muted": " ",
+        "format-muted": "",
+        "tooltip-format": "{volume}%",
+        "format-icons": {
+          "default": [" ", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+        },
+        "on-click": "pavucontrol"
       }
     }
   '';
