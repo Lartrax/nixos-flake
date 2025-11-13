@@ -27,7 +27,7 @@
     };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1a0be072-1c42-4fae-9026-404f39e633e5";
+    { device = "/dev/disk/by-uuid/0edb14ca-bd82-4637-92a1-bf25123e6385";
       fsType = "ext4";
     };
 
@@ -63,13 +63,8 @@
       fsType = "9p";
     };
 
-  fileSystems."/mnt/wslg/run/user/1000" =
-    { device = "tmpfs";
-      fsType = "tmpfs";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1672f71f-85ff-4f56-aff9-238f55a7021d"; }
+    [ { device = "/dev/disk/by-uuid/55adedcc-d6a5-4fe9-8a15-a8656966e382"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -77,7 +72,6 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
