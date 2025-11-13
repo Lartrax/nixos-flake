@@ -56,7 +56,7 @@
             nixos-wsl.nixosModules.default
             ./hosts/wsl/configuration.nix
             ./modules/defaults.nix
-            ./modules/docker.nix
+            ./modules/podman.nix
           ];
         };
       };

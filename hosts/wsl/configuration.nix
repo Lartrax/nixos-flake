@@ -14,7 +14,7 @@
   users.users.nixy = {
     isNormalUser = true;
     description = "";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" ];
   };
 
   wsl.enable = true;
