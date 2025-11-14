@@ -217,10 +217,16 @@ in {
         # Move workspace to monitor
         "$mainMod SHIFT ALT, h, movecurrentworkspacetomonitor, -1"
         "$mainMod SHIFT ALT, l, movecurrentworkspacetomonitor, 1"
+      ];
 
-        # Brightness setting for laptop
+      bindel = [
+        # Volume and brightness
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ];
 
       bindm = [
