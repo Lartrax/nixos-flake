@@ -210,11 +210,15 @@
         "scroll-step": 2,
         "format": "  {icon}",
         "format-bluetooth": "  {icon} ",
-        "format-bluetooth-muted": " ",
-        "format-muted": "",
+        "format-bluetooth-muted": " {icon} ",
+        "format-muted": " {icon}",
         "tooltip-format": "{volume}%",
         "format-icons": {
-          "default": [" ", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+          "default": [
+            "   ", "▏  ", "▎  ", "▍  ", "▌  ", "▋  ", "▊  ", "▉  ", "█  ",
+            "█  ", "█▏ ", "█▎ ", "█▍ ", "█▌ ", "█▋ ", "█▊ ", "█▉ ", "██ ",
+            "██ ", "██▏", "██▎", "██▍", "██▌", "██▋", "██▊", "██▉", "███"
+          ]
         },
         "on-click": "pavucontrol"
       }
