@@ -13,9 +13,9 @@
     extraConfig.pipewire."48-low-latency" = {
       "context.properties" = {
         "default.clock.rate" = 48000;
-        "default.clock.quantum" = 32;
-        "default.clock.min-quantum" = 16;
-        "default.clock.max-quantum" = 64;
+        "default.clock.quantum" = 128;
+        "default.clock.min-quantum" = 64;
+        "default.clock.max-quantum" = 256;
       };
     };
   };

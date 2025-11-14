@@ -102,6 +102,10 @@
     	padding-right: 12px;
     }
 
+    #pulseaudio {
+      padding-right: 0px;
+    }
+
     #cpu {
       font-size: 8px;
     }
@@ -137,7 +141,7 @@
     	"exclusive": true,
     	"passthrough": false,
     	"gtk-layer-shell": true,
-      "margin": "6px 8px 3px 8px",
+      "margin": "4px 6px 2px 6px",
 
         "modules-left": ["hyprland/workspaces"],
         // "modules-center": ["wlr/taskbar"],
@@ -232,16 +236,16 @@
 
       "pulseaudio": {
         "scroll-step": 2,
-        "format": "  {icon}",
-        "format-bluetooth": "  {icon} ",
+        "format": "  {icon}",
+        "format-bluetooth": "  {icon} ",
         "format-bluetooth-muted": " {icon} ",
         "format-muted": " {icon}",
         "tooltip-format": "{volume}%",
         "format-icons": {
           "default": [
-            "   ", "▏  ", "▎  ", "▍  ", "▌  ", "▋  ", "▊  ", "▉  ", "█  ",
-            "█  ", "█▏ ", "█▎ ", "█▍ ", "█▌ ", "█▋ ", "█▊ ", "█▉ ", "██ ",
-            "██ ", "██▏", "██▎", "██▍", "██▌", "██▋", "██▊", "██▉", "███"
+            "   ▏", "▏  ▏", "▎  ▏", "▍  ▏", "▌  ▏", "▋  ▏", "▊  ▏", "▉  ▏", "█  ▏",
+            "█  ▏", "█▏ ▏", "█▎ ▏", "█▍ ▏", "█▌ ▏", "█▋ ▏", "█▊ ▏", "█▉ ▏", "██ ▏",
+            "██ ▏", "██▏▏", "██▎▏", "██▍▏", "██▌▏", "██▋▏", "██▊▏", "██▉▏", "███▏"
           ]
         },
         "on-click": "pavucontrol"
