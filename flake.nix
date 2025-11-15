@@ -47,6 +47,7 @@
             ./modules/graphics.nix
             ./modules/kernels/linux-latest.nix
             ./modules/automount.nix
+            ./modules/bluetooth.nix
           ];
         };
         wsl = nixpkgs.lib.nixosSystem {
