@@ -15,6 +15,7 @@
     isNormalUser = true;
     description = "";
     extraGroups = [ "networkmanager" "wheel" "podman" ];
+    shell = pkgs.fish;
   };
 
   wsl.enable = true;

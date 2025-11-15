@@ -33,6 +33,7 @@
             ./modules/nvidia.nix
             chaotic.nixosModules.default
             ./modules/kernels/cachyos-lto.nix
+            ./modules/fish.nix
           ];
         };
         laptop = nixpkgs.lib.nixosSystem {
@@ -49,6 +50,7 @@
             ./modules/automount.nix
             ./modules/bluetooth.nix
             ./modules/gaming.nix
+            ./modules/fish.nix
           ];
         };
         wsl = nixpkgs.lib.nixosSystem {
@@ -59,6 +61,7 @@
             ./hosts/wsl/configuration.nix
             ./modules/defaults.nix
             ./modules/podman.nix
+            ./modules/fish.nix
           ];
         };
       };

@@ -17,6 +17,7 @@
     isNormalUser = true;
     description = "";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
   };
 
   programs.hyprland = {
