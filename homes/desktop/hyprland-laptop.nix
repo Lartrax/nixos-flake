@@ -24,6 +24,7 @@ in {
     ./modules/swww.nix
     ./modules/hyprlock.nix
     ./modules/networkmanagerapplet.nix
+    ./modules/catppuccin-cursors.nix
   ];
 
   xdg.portal.enable = true;
@@ -31,9 +32,9 @@ in {
 
   home.sessionVariables = {
     "GTK_THEME" = "Catppuccin-Dark-Frappe";
-    "CURSOR_THEME" = "catppuccin-frappe-dark-cursors";
-    "XCURSOR_SIZE" = "24";
-    "HYPRCURSOR_SIZE" = "24";
+    "XCURSOR_THEME" = "catppuccin-frappe-dark-cursors";
+    "XCURSOR_SIZE" = "32";
+    "HYPRCURSOR_SIZE" = "32";
     "GDK_BACKEND" = "wayland,x11";
     "QT_QPA_PLATFORM" = "wayland;xcb";
     "SDL_VIDEODRIVER" = "wayland";
