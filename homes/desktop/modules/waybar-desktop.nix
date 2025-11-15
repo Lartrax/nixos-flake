@@ -31,13 +31,13 @@
     }
 
     .modules-right {
-    	background: @main-bg;
-    	padding-left: 16px;
+      background: @main-bg;
+      padding-left: 16px;
       padding-right: 16px;
     }
 
     window#waybar {
-    	background: @bar-bg;
+      background: @bar-bg;
       border-radius: 24px;
       border: solid 1px;
       border-color: @wb-hvr-bg;
@@ -103,11 +103,13 @@
     }
 
     #pulseaudio {
-      padding-right: 0px;
+      padding-right: 6px;
     }
 
     #cpu {
       font-size: 8px;
+      padding-left: 6px;
+      padding-right: 6px;
     }
 
     #memory {
@@ -121,11 +123,11 @@
     }
 
     #custom-seperator {
-    	color: @tool-color;
+      color: @tool-color;
       font-size: 28px;
       opacity: 0.1;
-      padding-left: 12px;
-      padding-right: 12px;
+      padding-left: 6px;
+      padding-right: 6px;
     }
   '';
 

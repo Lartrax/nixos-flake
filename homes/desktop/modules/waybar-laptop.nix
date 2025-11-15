@@ -31,13 +31,13 @@
     }
 
     .modules-right {
-    	background: @main-bg;
-    	padding-left: 16px;
+      background: @main-bg;
+      padding-left: 16px;
       padding-right: 16px;
     }
 
     window#waybar {
-    	background: @bar-bg;
+      background: @bar-bg;
       border-radius: 24px;
       border: solid 1px;
       border-color: @wb-hvr-bg;
@@ -82,6 +82,7 @@
 
     #cpu,
     #battery,
+    #backlight,
     #memory,
     #clock,
     #window,
@@ -103,11 +104,13 @@
     }
 
     #pulseaudio {
-      padding-right: 0px;
+      padding-right: 6px;
     }
 
     #cpu {
       font-size: 8px;
+      padding-left: 6px;
+      padding-right: 6px;
     }
 
     #memory {
@@ -124,8 +127,8 @@
       color: @tool-color;
       font-size: 28px;
       opacity: 0.1;
-      padding-left: 12px;
-      padding-right: 12px;
+      padding-left: 6px;
+      padding-right: 6px;
     }
 
     #battery {
@@ -145,7 +148,7 @@
 
         "modules-left": ["hyprland/workspaces"],
         // "modules-center": ["wlr/taskbar"],
-        "modules-right": ["memory", "cpu", "custom/seperator", "network", "pulseaudio", "battery", "custom/seperator", "clock"],
+        "modules-right": ["memory", "cpu", "custom/seperator", "network", "pulseaudio", "backlight", "battery", "custom/seperator", "clock"],
 
     	"cpu": {
         "rotate": 90,
@@ -249,6 +252,13 @@
           ]
         },
         "on-click": "pavucontrol"
+      },
+
+      "backlight": {
+        "scroll-step": 1,
+	"tooltip": false,
+        "format": "{icon}",
+	"format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"]
       }
     }
   '';
