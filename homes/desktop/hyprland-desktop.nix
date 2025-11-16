@@ -45,6 +45,7 @@ in {
     "QT_WAYLAND_DISABLE_WINDOWDECORATION" = "1";
     "QT_QPA_PLATFORMTHEME" = "qt5ct";
     "NIXOS_OZONE_WL" = "1";
+    "GDK_SCALE" = "2";
   };
 
   wayland.windowManager.hyprland = {
@@ -61,6 +62,8 @@ in {
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "rofi -show drun -show-icons";
+
+      xwayland.force_zero_scaling = true;
 
       # Look and feel
       general = {
