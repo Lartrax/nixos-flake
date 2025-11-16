@@ -204,12 +204,13 @@
     	},
 
       "network": {
-        "format-wifi": "",
-        "format-ethernet": "",
+        "format-wifi": "{icon}",
+        "format-ethernet": "",
         "tooltip-format-wifi": "{essid} {signalStrength}%",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-disconnected": "⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-disconnected": "󰤮",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
       },
 
       "custom/seperator": {
@@ -256,9 +257,9 @@
 
       "backlight": {
         "scroll-step": 1,
-	"tooltip": false,
+        "tooltip": false,
         "format": "{icon}",
-	"format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"]
+        "format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"]
       }
     }
   '';
