@@ -33,8 +33,8 @@ in {
   home.sessionVariables = {
     "GTK_THEME" = "Catppuccin-Dark-Frappe";
     "XCURSOR_THEME" = "catppuccin-frappe-dark-cursors";
-    "XCURSOR_SIZE" = "32";
-    "HYPRCURSOR_SIZE" = "32";
+    "XCURSOR_SIZE" = "24";
+    "HYPRCURSOR_SIZE" = "24";
     "GDK_BACKEND" = "wayland,x11";
     "QT_QPA_PLATFORM" = "wayland;xcb";
     "SDL_VIDEODRIVER" = "wayland";
