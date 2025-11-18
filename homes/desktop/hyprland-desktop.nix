@@ -206,11 +206,11 @@ in {
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
 
-        # Move windows with mainMod + SHIFT + h/j/k/l
-        "$mainMod SHIFT, j, movewindow, u"
+        # Move windows with mainMod + SHIFT + j/k/l/ø
+        "$mainMod SHIFT, l, movewindow, u"
         "$mainMod SHIFT, k, movewindow, d"
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, l, movewindow, r"
+        "$mainMod SHIFT, j, movewindow, l"
+        "$mainMod SHIFT, oslash, movewindow, r"
 
         # Resize window
         "$mainMod ALT, right, resizeactive, 24 0"
@@ -219,8 +219,8 @@ in {
         "$mainMod ALT, down, resizeactive, 0 24"
 
         # Move workspace to monitor
-        "$mainMod SHIFT ALT, h, movecurrentworkspacetomonitor, -1"
-        "$mainMod SHIFT ALT, l, movecurrentworkspacetomonitor, 1"
+        "$mainMod SHIFT ALT, j, movecurrentworkspacetomonitor, -1"
+        "$mainMod SHIFT ALT, oslash, movecurrentworkspacetomonitor, 1"
       ];
 
       bindel = [

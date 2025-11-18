@@ -8,6 +8,7 @@
     ./apps/dolphin.nix
     ./apps/kitty.nix
     ./apps/easyeffects.nix
+    ./apps/dolphin-emu.nix
 
     ./cli-tools/fastfetch.nix
     ./cli-tools/git.nix

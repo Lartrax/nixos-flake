@@ -33,6 +33,7 @@
             ./modules/nvidia.nix
             chaotic.nixosModules.default
             ./modules/kernels/cachyos-lto.nix
+            ./modules/automount.nix
             ./modules/fish.nix
           ];
         };
