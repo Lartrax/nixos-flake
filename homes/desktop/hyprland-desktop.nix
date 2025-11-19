@@ -14,7 +14,10 @@ let
     ${pkgs.swww}/bin/swww img ${../../assets/wallpaper.webp} &
 
     # start wallpaper daemon
-    ${pkgs.swww}/bin/swww-daemon
+    ${pkgs.swww}/bin/swww-daemon &
+
+    # start bluelight filter daemon
+    ${pkgs.hyprsunset}/bin/hyprsunset
   '';
 in {
   imports = [
@@ -25,10 +28,14 @@ in {
     ./modules/hyprlock.nix
     ./modules/networkmanagerapplet.nix
     ./modules/catppuccin-cursors.nix
+    ./modules/hyprsunset.nix
   ];
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+  ];
 
   home.sessionVariables = {
     "GTK_THEME" = "Catppuccin-Dark-Frappe";

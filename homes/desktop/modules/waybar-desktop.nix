@@ -139,7 +139,7 @@
     	"exclusive": true,
     	"passthrough": false,
     	"gtk-layer-shell": true,
-      "margin": "8px 12px 4px 12px",
+      "margin": "4px 8px 2px 8px",
 
     	"modules-left": ["hyprland/workspaces"],
     	// "modules-center": ["wlr/taskbar"],
