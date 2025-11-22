@@ -1,6 +1,8 @@
 { ... }:
 
 {
+  services.journald.extraConfig = "SystemMaxUse=50M";
+
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
