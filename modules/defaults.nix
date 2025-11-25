@@ -3,9 +3,6 @@
 {
   services.journald.extraConfig = "SystemMaxUse=50M";
 
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
-
   time.timeZone = "Europe/Oslo";
 
   i18n.defaultLocale = "en_US.UTF-8";
