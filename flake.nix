@@ -35,6 +35,7 @@
             ./modules/kernels/cachyos-lto.nix
             ./modules/automount.nix
             ./modules/fish.nix
+            ./modules/network.nix
           ];
         };
         laptop = nixpkgs.lib.nixosSystem {
@@ -52,6 +53,7 @@
             ./modules/bluetooth.nix
             ./modules/gaming.nix
             ./modules/fish.nix
+            ./modules/network.nix
           ];
         };
         wsl = nixpkgs.lib.nixosSystem {
