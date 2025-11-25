@@ -121,8 +121,8 @@
     }
 
     #memory {
-      font-size: 20px;
-      padding-bottom: 4px;
+      font-size: 18px;
+      padding-bottom: 2px;
     }
 
     #window,
@@ -132,7 +132,7 @@
 
     #custom-seperator {
       color: @tool-color;
-      font-size: 28px;
+      font-size: 24px;
       opacity: 0.1;
       padding-left: 6px;
       padding-right: 6px;
