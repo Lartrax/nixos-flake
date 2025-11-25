@@ -30,17 +30,24 @@
     	font-weight: bold;
     }
 
-    .modules-right {
-      background: @main-bg;
-      padding-left: 16px;
-      padding-right: 16px;
+    window#waybar {
+      all: unset;
     }
 
-    window#waybar {
+    .modules-left {
       background: @bar-bg;
       border-radius: 24px;
       border: solid 1px;
       border-color: @wb-hvr-bg;
+    }
+
+    .modules-right {
+      background: @bar-bg;
+      border-radius: 24px;
+      border: solid 1px;
+      border-color: @wb-hvr-bg;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     tooltip {
