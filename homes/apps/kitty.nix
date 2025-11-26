@@ -44,7 +44,7 @@
 
   home.file.".config/kitty/kitty.conf".text = ''
     include theme.conf
-
+    window_padding_width 4
     font_family "Monaspace Neon Nerd Font"
   '';
 }
