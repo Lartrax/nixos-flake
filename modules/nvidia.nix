@@ -31,7 +31,7 @@
     # Enable the Nvidia settings menu
     nvidiaSettings = true;
     # Select driver version
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   environment.sessionVariables = {

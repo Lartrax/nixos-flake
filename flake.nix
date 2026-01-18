@@ -12,10 +12,12 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs =
-    { self, nixpkgs, nixos-wsl, chaotic, home-manager, hyprland }@inputs:
+  outputs = { self, nixpkgs, nixos-wsl, chaotic, home-manager, nix-minecraft
+    , hyprland }@inputs:
     let system = "x86_64-linux";
 
     in {
@@ -36,6 +38,8 @@
             ./modules/automount.nix
             ./modules/fish.nix
             ./modules/network.nix
+            ./modules/ssh.nix
+            ./modules/minecraft.nix
           ];
         };
         laptop = nixpkgs.lib.nixosSystem {

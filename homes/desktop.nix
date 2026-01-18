@@ -15,6 +15,7 @@
     ./cli-tools/lazygit.nix
     ./cli-tools/neovim.nix
     ./cli-tools/btop-cuda.nix
+    ./cli-tools/java-jdk-21.nix
 
     ./system/keyboard-layouts/hdc.nix
   ];
