@@ -15,14 +15,25 @@
       enable = true;
       autoStart = false;
       serverProperties = {
-        difficulty = 4;
-        gamemode = 0;
+        difficulty = "hard";
+        gamemode = "survival";
         max-players = 300;
         motd = "Server A Minecraft";
-        simulation-distance = 12;
+
+        simulation-distance = 10;
         view-distance = 16;
+
+        spawn-protection = 0;
+        sync-chunk-writes = false;
+        enable-command-block = false;
       };
-      jvmOpts = "-Xmx30G";
+      jvmOpts = [
+        "-Xms30G"
+        "-Xmx30G"
+        "-XX:+UseZGC"
+        "-XX:+ZUncommit"
+        "-XX:+AlwaysPreTouch"
+      ];
       package = pkgs.fabricServers.fabric-1_21_11;
       symlinks = {
         "mods" = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
@@ -85,6 +96,11 @@
             url =
               "https://cdn.modrinth.com/data/II7t6llZ/versions/efhudKpb/wwoo-fabric-2.6.2.jar";
             sha256 = "xMXUTeKpO4q0U6ojOM+hdU9S/0S6hh2cIb5RwB+zWGQ=";
+          };
+          Krypton = pkgs.fetchurl {
+            url =
+              "https://cdn.modrinth.com/data/fQEb0iXm/versions/O9LmWYR7/krypton-0.2.10.jar";
+            sha256 = "lCkdVpCgztf+fafzgP29y+A82sitQiegN4Zrp0Ve/4s=";
           };
         });
       };
