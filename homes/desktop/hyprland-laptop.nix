@@ -121,11 +121,11 @@ in {
       };
 
       layerrule = [
-        "ignorealpha 0.01, waybar"
-        "blur, waybar"
-        "blurpopups, waybar"
-        "blur, rofi"
-        "blur, mako"
+        "ignore_alpha 0.01, match:namespace waybar"
+        "blur on, match:namespace waybar"
+        "blur_popups on, match:namespace waybar"
+        "blur on, match:namespace rofi"
+        "blur on, match:namespace mako"
       ];
 
       animations = {
@@ -247,11 +247,12 @@ in {
       ];
 
       # Windows and workspaces
-      windowrule = [
-        # Ignore maximize requests from apps
+      windowrulev2 = [
+        # Ignore maximize requests from all apps. You'll probably like this.
         "suppressevent maximize, class:.*"
+
         # Fix some dragging issues with XWayland
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        "nofocus true, class:^$, title:^$, xwayland:1, float:1, fullscreen:0, pin:0"
       ];
     };
   };
