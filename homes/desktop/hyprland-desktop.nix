@@ -247,12 +247,11 @@ in {
       ];
 
       # Windows and workspaces
-      windowrulev2 = [
-        # Ignore maximize requests from all apps. You'll probably like this.
-	"suppressevent maximize, class:.*"
-
+      windowrule = [
+        # Ignore maximize requests from all apps.
+	"match:class .*, maximize 0"
 	# Fix some dragging issues with XWayland
-	"nofocus true, class:^$, title:^$, xwayland:^$, float:1, fullscreen:0, pin:0"
+	"match:class ^$, match:title ^$, match:xwayland 1, no_focus 1, float 1, fullscreen 0, pin 0"
       ];
     };
   };
