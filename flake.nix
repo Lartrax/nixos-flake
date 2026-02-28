@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -16,8 +16,8 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, chaotic, home-manager, nix-minecraft
-    , hyprland }@inputs:
+  outputs = { self, nixpkgs, nixos-wsl, nix-cachyos-kernel, home-manager
+    , nix-minecraft, hyprland }@inputs:
     let system = "x86_64-linux";
 
     in {
@@ -33,7 +33,9 @@
             ./modules/fonts/monaspace.nix
             ./modules/audio.nix
             ./modules/nvidia.nix
-            chaotic.nixosModules.default
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+            })
             ./modules/kernels/cachyos-lto.nix
             ./modules/automount.nix
             ./modules/fish.nix
