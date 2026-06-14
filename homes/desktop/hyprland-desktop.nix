@@ -17,9 +17,13 @@ let
     ${pkgs.swww}/bin/swww-daemon &
 
     # start bluelight filter daemon
-    ${pkgs.hyprsunset}/bin/hyprsunset
+    ${pkgs.hyprsunset}/bin/hyprsunset &
+
+    # start qt ui
+    ${pkgs.quickshell}/bin/quickshell
   '';
-in {
+in
+{
   imports = [
     ./modules/waybar-desktop.nix
     ./modules/mako.nix
@@ -29,6 +33,7 @@ in {
     ./modules/networkmanagerapplet.nix
     ./modules/catppuccin-cursors.nix
     ./modules/hyprsunset.nix
+    ./modules/quickshell.nix
   ];
 
   xdg.portal.enable = true;
@@ -42,7 +47,7 @@ in {
     "XCURSOR_THEME" = "catppuccin-frappe-dark-cursors";
     "XCURSOR_SIZE" = "24";
     "HYPRCURSOR_SIZE" = "24";
-    "GDK_BACKEND" = "wayland,x11";
+    "GDK_BACKEND" = "wayland,x11,*";
     "QT_QPA_PLATFORM" = "wayland;xcb";
     "SDL_VIDEODRIVER" = "wayland";
     "CLUTTER_BACKEND" = "wayland";
@@ -126,6 +131,7 @@ in {
         "blur_popups on, match:namespace waybar"
         "blur on, match:namespace rofi"
         "blur on, match:namespace mako"
+        "blur on, match:namespace quickshell"
       ];
 
       animations = {
@@ -139,10 +145,13 @@ in {
         preserve_split = true;
       };
 
-      master = { new_status = "master"; };
+      master = {
+        new_status = "master";
+      };
 
       misc = {
-        force_default_wallpaper = 2;
+        # force_default_wallpaper = 2;
+        disable_hyprland_logo = true;
         disable_splash_rendering = true;
       };
 
@@ -249,9 +258,9 @@ in {
       # Windows and workspaces
       windowrule = [
         # Ignore maximize requests from all apps.
-	"match:class .*, maximize 0"
-	# Fix some dragging issues with XWayland
-	"match:class ^$, match:title ^$, match:xwayland 1, no_focus 1, float 1, fullscreen 0, pin 0"
+        "match:class .*, maximize 0"
+        # Fix some dragging issues with XWayland
+        "match:class ^$, match:title ^$, match:xwayland 1, no_focus 1, float 1, fullscreen 0, pin 0"
       ];
     };
   };
