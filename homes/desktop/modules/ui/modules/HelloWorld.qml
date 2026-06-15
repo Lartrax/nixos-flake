@@ -16,19 +16,11 @@ PanelWindow {
   color: "#00000000"
 
   Rectangle {
-    id: glassBase
     anchors.fill: parent
     anchors.topMargin: -border.width
-    color: "#55ffffff"
+    color: "#66ffffff"
     border.color: "#88ffffff"
     border.width: 1
-  }
-
-  MultiEffect {
-    anchors.fill: parent
-    source: glassBase
-    blurEnabled: true
-    blur: 48
   }
 
   RowLayout {
@@ -49,7 +41,7 @@ PanelWindow {
         rightPadding: 4
 
         text: icons[workspace.id - 1]
-        color: isActive ? "#aa000000" : (workspace ? "#88eeeeee" : "#ff0000")
+        color: isActive ? "#11000000" : (workspace ? "#88eeeeee" : "#ff0000")
         font { pixelSize: 18; bold: false }
 
         MouseArea {
