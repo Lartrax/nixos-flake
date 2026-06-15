@@ -131,7 +131,6 @@ in
         "blur_popups on, match:namespace waybar"
         "blur on, match:namespace rofi"
         "blur on, match:namespace mako"
-        "blur on, match:namespace quickshell"
       ];
 
       animations = {
