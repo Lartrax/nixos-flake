@@ -10,7 +10,7 @@
 
     profile {
       time = 21:00
-      temperature = 2700
+      # temperature = 2700
     }
   '';
 }
