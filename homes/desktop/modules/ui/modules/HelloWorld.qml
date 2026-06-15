@@ -12,44 +12,114 @@ PanelWindow {
     left: true
     right: true
   }
+
   implicitHeight: 48
   color: "#00000000"
 
-  Rectangle {
+  property var workspaceList: Hyprland.workspaces.values.filter(w => w.id != null)
+  property list<string> icons: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
+
+  function wsAt(i) {
+    return workspaceList[i]
+  }
+
+  function iconFor(ws) {
+    return (ws && ws.id > 0 && ws.id <= icons.length) ? icons[ws.id - 1] : ""
+  }
+
+  function isActive(ws) {
+    return ws && Hyprland.focusedWorkspace?.id === ws.id
+  }
+
+  Item {
+    id: glassSource
     anchors.fill: parent
-    anchors.topMargin: -border.width
-    color: "#66ffffff"
-    border.color: "#88ffffff"
-    border.width: 1
+    visible: false
+    layer.enabled: true
+
+    Rectangle {
+      anchors.fill: parent
+      anchors.topMargin: -border.width
+      color: "#66ffffff"
+      border.color: "#88ffffff"
+      border.width: 1
+    }
+  }
+
+  Item {
+    id: maskSource
+    anchors.fill: parent
+    visible: false
+    layer.enabled: true
+
+    RowLayout {
+      anchors.fill: parent
+      anchors.leftMargin: 12
+      anchors.bottomMargin: 1
+
+      Repeater {
+        model: workspaceList.length
+
+        Text {
+          property var workspace: wsAt(index)
+
+          leftPadding: 4
+          rightPadding: 4
+          text: iconFor(workspace)
+          color: "#ffffffff"
+          font {
+            pixelSize: 18
+            bold: false
+          }
+        }
+      }
+
+      Item { Layout.fillWidth: true }
+    }
+  }
+
+  MultiEffect {
+    anchors.fill: parent
+    source: glassSource
+
+    maskEnabled: true
+    maskSource: maskSource
+    maskInverted: true
+
+    maskThresholdMin: 0.99
+    maskThresholdMax: 1.0
+    maskSpreadAtMin: 0.0
+    maskSpreadAtMax: 0.0
   }
 
   RowLayout {
     anchors.fill: parent
     anchors.leftMargin: 12
-    anchors.bottomMargin: 1 // account for border
+    anchors.bottomMargin: 1
 
     Repeater {
-      model: Hyprland.workspaces.values.length
+      model: workspaceList.length
 
       Text {
-        property var workspaces: Hyprland.workspaces.values.filter(w => w.id != null)
-        property var workspace: workspaces[index]
-        property bool isActive: Hyprland.focusedWorkspace?.id === workspace.id
-        property list<string> icons: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
+        property var workspace: wsAt(index)
 
         leftPadding: 4
         rightPadding: 4
 
-        text: icons[workspace.id - 1]
-        color: isActive ? "#11000000" : (workspace ? "#88eeeeee" : "#ff0000")
-        font { pixelSize: 18; bold: false }
+        text: iconFor(workspace)
+        color: isActive(workspace) ? "#11000000" : "#88eeeeee"
+        font {
+          pixelSize: 18
+          bold: false
+        }
 
         MouseArea {
           anchors.fill: parent
-          onClicked: Hyprland.dispatch("workspace " + workspace.id)
+          onClicked: if (workspace) Hyprland.dispatch("workspace " + workspace.id)
         }
       }
     }
+
     Item { Layout.fillWidth: true }
   }
 }
