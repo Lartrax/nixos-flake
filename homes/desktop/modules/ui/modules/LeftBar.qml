@@ -10,10 +10,10 @@ PanelWindow {
   anchors {
     top: true
     left: true
-    right: true
+    bottom: true
   }
 
-  implicitHeight: 48
+  implicitWidth: 48
   color: "#00000000"
 
   property var workspaceList: Hyprland.workspaces.values.filter(w => w.id != null)
@@ -39,9 +39,8 @@ PanelWindow {
 
     Rectangle {
       anchors.fill: parent
-      anchors.topMargin: -border.width
-      color: "#66ffffff"
-      border.color: "#88ffffff"
+      color: "#77ffffff"
+      border.color: "#99ffffff"
       border.width: 1
     }
   }
@@ -52,10 +51,10 @@ PanelWindow {
     visible: false
     layer.enabled: true
 
-    RowLayout {
+    ColumnLayout {
       anchors.fill: parent
-      anchors.leftMargin: 12
-      anchors.bottomMargin: 1
+      anchors.topMargin: 12
+      anchors.rightMargin: 1
 
       Repeater {
         model: workspaceList.length
@@ -63,18 +62,18 @@ PanelWindow {
         Text {
           property var workspace: wsAt(index)
 
-          leftPadding: 4
-          rightPadding: 4
+          topPadding: 4
+          bottomPadding: 4
           text: iconFor(workspace)
           color: "#ffffffff"
           font {
-            pixelSize: 18
+            pixelSize: 20
             bold: false
           }
         }
       }
 
-      Item { Layout.fillWidth: true }
+      Item { Layout.fillHeight: true }
     }
   }
 
@@ -86,16 +85,16 @@ PanelWindow {
     maskSource: maskSource
     maskInverted: true
 
-    maskThresholdMin: 0.99
+    maskThresholdMin: 0.5
     maskThresholdMax: 1.0
-    maskSpreadAtMin: 0.0
-    maskSpreadAtMax: 0.0
+    maskSpreadAtMin: 1.0
+    maskSpreadAtMax: 1.0
   }
 
-  RowLayout {
+  ColumnLayout {
     anchors.fill: parent
-    anchors.leftMargin: 12
-    anchors.bottomMargin: 1
+    anchors.topMargin: 12
+    anchors.rightMargin: 1
 
     Repeater {
       model: workspaceList.length
@@ -103,13 +102,13 @@ PanelWindow {
       Text {
         property var workspace: wsAt(index)
 
-        leftPadding: 4
-        rightPadding: 4
+        topPadding: 4
+        bottomPadding: 4
 
         text: iconFor(workspace)
-        color: isActive(workspace) ? "#11000000" : "#88eeeeee"
+        color: isActive(workspace) ? "#22000000" : "#22ffffff"
         font {
-          pixelSize: 18
+          pixelSize: 20
           bold: false
         }
 
@@ -120,6 +119,6 @@ PanelWindow {
       }
     }
 
-    Item { Layout.fillWidth: true }
+    Item { Layout.fillHeight: true }
   }
 }
