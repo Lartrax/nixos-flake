@@ -15,23 +15,20 @@ PanelWindow {
   implicitHeight: 48
   color: "#00000000"
 
-  MultiEffect {
-    blur: 12
-    blurEnabled: true
-    source: Rectangle {
-    layer.enabled: true
-    color: "#55ffffff" // argb
-    border {
-      color: "#88ffffff"
-      width: 1
-    }
-    anchors {
-      fill: parent
-      rightMargin: -border.width
-      topMargin: -border.width
-      leftMargin: -border.width
-    }
+  Rectangle {
+    id: glassBase
+    anchors.fill: parent
+    anchors.topMargin: -border.width
+    color: "#55ffffff"
+    border.color: "#88ffffff"
+    border.width: 1
   }
+
+  MultiEffect {
+    anchors.fill: parent
+    source: glassBase
+    blurEnabled: true
+    blur: 48
   }
 
   RowLayout {
@@ -42,7 +39,6 @@ PanelWindow {
     Repeater {
       model: Hyprland.workspaces.values.length
 
-      
       Text {
         property var workspaces: Hyprland.workspaces.values.filter(w => w.id != null)
         property var workspace: workspaces[index]
