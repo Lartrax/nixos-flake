@@ -9,6 +9,9 @@ import QtQuick.Shapes
 
 PanelWindow {
   id: root
+  exclusionMode: ExclusionMode.Ignore
+  aboveWindows: true
+
   anchors {
     top: true
     left: true
