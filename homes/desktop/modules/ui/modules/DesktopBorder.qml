@@ -20,15 +20,6 @@ PanelWindow {
 
   color: "#00000000"
 
-  Rectangle {
-    anchors {
-      top: parent
-      left: parent
-      bottom: parent
-    }
-    implicitWidth: 54
-  }
-
   // cutout
   Shape {
     id: maskCutout
