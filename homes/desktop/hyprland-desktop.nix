@@ -132,6 +132,7 @@ in
         "blur on, match:namespace mako"
         "blur on, match:namespace quickshell"
         "ignore_alpha 0.01, match:namespace quickshell"
+        "blur off, match:namespace quickshell-border-shadow"
       ];
 
       animations = {

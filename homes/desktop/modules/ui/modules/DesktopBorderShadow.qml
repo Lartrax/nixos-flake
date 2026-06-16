@@ -11,6 +11,7 @@ PanelWindow {
   id: root
   exclusionMode: ExclusionMode.Ignore
   aboveWindows: true
+  WlrLayershell.namespace: "quickshell-border-shadow"
 
   anchors {
     top: true
@@ -29,8 +30,6 @@ PanelWindow {
     anchors.fill: parent
     visible: false
     layer.enabled: true
-    layer.samples: 8
-    layer.smooth: true
 
     ShapePath {
       fillColor: "#ff000000"
@@ -64,76 +63,35 @@ PanelWindow {
     }
   }
 
-  // glass base
-  Item {
-    id: glassSource
-    anchors.fill: parent
+  // shadow
+  MultiEffect {
+    id: innerShadow
+    anchors.fill: maskCutout
+    source: maskCutout
     visible: false
-    layer.enabled: true
-    layer.samples: 8
-    layer.smooth: true
 
-    Rectangle {
-      anchors.fill: parent
-      color: "#aaffffff"
-    }
+    shadowEnabled: true
+    shadowColor: "#33000000"
+    shadowBlur: 1.0
+    shadowHorizontalOffset: 0
+    shadowVerticalOffset: 10
+
+    // blurMax: 10
+    // blurMultiplier: 10
   }
 
-  // cutout effect
+  // shadow cut
   MultiEffect {
-    id: glassCutout
-    anchors.fill: parent
-    source: glassSource
-    layer.smooth: true
+    anchors.fill: maskCutout
+    source: innerShadow
 
     maskEnabled: true
     maskSource: maskCutout
     maskInverted: true
 
-    maskThresholdMin: 0.9
+    maskThresholdMin: 0.0
     maskThresholdMax: 1.0
     maskSpreadAtMin: 0.0
     maskSpreadAtMax: 1.0
-  }
-
-  // border
-  Shape {
-    anchors.fill: parent
-    layer.enabled: true
-    layer.samples: 8
-    layer.smooth: true
-
-    ShapePath {
-      strokeColor: "#bbffffff"
-      strokeWidth: 1.5
-      fillColor: "#00000000"
-
-      startX: 54;
-      startY: 8 + 24;
-      PathLine { x: 54; y: root.height - 8 - 24 }
-      PathArc {
-        x: 54 + 24; y: root.height - 8
-        radiusX: 24; radiusY: 24
-        direction: PathArc.Counterclockwise
-      }
-      PathLine { x: root.width - 8 - 24; y: root.height - 8 }
-      PathArc {
-        x: root.width - 8; y: root.height - 8 - 24
-        radiusX: 24; radiusY: 24
-        direction: PathArc.Counterclockwise
-      }
-      PathLine { x: root.width - 8; y: 8 + 24 }
-      PathArc {
-        x: root.width - 8 - 24; y: 8
-        radiusX: 24; radiusY: 24
-        direction: PathArc.Counterclockwise
-      }
-      PathLine { x: 54 + 24; y: 8 }
-      PathArc {
-        x: 54; y: 8 + 24
-        radiusX: 24; radiusY: 24
-        direction: PathArc.Counterclockwise
-      }
-    }
   }
 }

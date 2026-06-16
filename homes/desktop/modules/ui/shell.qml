@@ -6,5 +6,6 @@ ShellRoot {
   ReserveTop {}
   ReserveRight {}
   ReserveBottom {}
+  DesktopBorderShadow {}
   DesktopBorder {}
 }
