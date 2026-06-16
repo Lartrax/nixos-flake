@@ -19,7 +19,8 @@ let
     # start bluelight filter daemon
     ${pkgs.hyprsunset}/bin/hyprsunset
   '';
-in {
+in
+{
   imports = [
     ./modules/waybar-laptop.nix
     ./modules/mako.nix
@@ -42,7 +43,7 @@ in {
     "XCURSOR_THEME" = "catppuccin-frappe-dark-cursors";
     "XCURSOR_SIZE" = "24";
     "HYPRCURSOR_SIZE" = "24";
-    "GDK_BACKEND" = "wayland,x11";
+    "GDK_BACKEND" = "wayland,x11,*";
     "QT_QPA_PLATFORM" = "wayland;xcb";
     "SDL_VIDEODRIVER" = "wayland";
     "CLUTTER_BACKEND" = "wayland";
@@ -50,7 +51,6 @@ in {
     "XDG_SESSION_TYPE" = "wayland";
     "XDG_SESSION_DESKTOP" = "Hyprland";
     "QT_WAYLAND_DISABLE_WINDOWDECORATION" = "1";
-    "QT_QPA_PLATFORMTHEME" = "qt5ct";
     "NIXOS_OZONE_WL" = "1";
     "GDK_SCALE" = "2";
   };
@@ -126,6 +126,8 @@ in {
         "blur_popups on, match:namespace waybar"
         "blur on, match:namespace rofi"
         "blur on, match:namespace mako"
+        "blur on, match:namespace quickshell"
+        "ignore_alpha 0.01, match:namespace quickshell"
       ];
 
       animations = {
@@ -139,7 +141,9 @@ in {
         preserve_split = true;
       };
 
-      master = { new_status = "master"; };
+      master = {
+        new_status = "master";
+      };
 
       misc = {
         force_default_wallpaper = 2;
@@ -249,9 +253,9 @@ in {
       # Windows and workspaces
       windowrule = [
         # Ignore maximize requests from all apps.
-	"match:class .*, maximize 0"
-	# Fix some dragging issues with XWayland
-	"match:class ^$, match:title ^$, match:xwayland 1, no_focus 1, float 1, fullscreen 0, pin 0"
+        "match:class .*, maximize 0"
+        # Fix some dragging issues with XWayland
+        "match:class ^$, match:title ^$, match:xwayland 1, no_focus 1, float 1, fullscreen 0, pin 0"
       ];
     };
   };

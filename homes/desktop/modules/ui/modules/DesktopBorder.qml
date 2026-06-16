@@ -16,16 +16,30 @@ PanelWindow {
     bottom: true
   }
 
-  // implicitHeight: 48
+  mask: Region{}
+
   color: "#00000000"
 
+  Rectangle {
+    anchors {
+      top: parent
+      left: parent
+      bottom: parent
+    }
+    implicitWidth: 54
+  }
+
+  // cutout
   Shape {
+    id: maskCutout
     anchors.fill: parent
+    visible: false
+    layer.enabled: true
+    layer.samples: 8
+    layer.smooth: true
 
     ShapePath {
-      strokeColor: "#ffff0000"
-      strokeWidth: 2
-      fillColor: "#00000000"
+      fillColor: "#ff000000"
 
       startX: 54;
       startY: 8 + 24;
@@ -33,10 +47,26 @@ PanelWindow {
       PathArc {
         x: 54 + 24; y: root.height - 8
         radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
       }
-      PathLine { x: root.width - 8; y: root.height - 8 }
-      PathLine { x: root.width - 8; y: 8 }
-      PathLine { x: 54; y: 8 }
+      PathLine { x: root.width - 8 - 24; y: root.height - 8 }
+      PathArc {
+        x: root.width - 8; y: root.height - 8 - 24
+        radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
+      }
+      PathLine { x: root.width - 8; y: 8 + 24 }
+      PathArc {
+        x: root.width - 8 - 24; y: 8
+        radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
+      }
+      PathLine { x: 54 + 24; y: 8 }
+      PathArc {
+        x: 54; y: 8 + 24
+        radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
+      }
     }
   }
 
@@ -46,51 +76,12 @@ PanelWindow {
     anchors.fill: parent
     visible: false
     layer.enabled: true
+    layer.samples: 8
+    layer.smooth: true
 
     Rectangle {
       anchors.fill: parent
-      // anchors.topMargin: -border.width
       color: "#88ffffff"
-      // border.color: "#99ffffff"
-      // border.width: 1
-    }
-  }
-
-  // border
-  Rectangle {
-    anchors.fill: parent
-    anchors.margins: 8
-    anchors.leftMargin: anchors.margins + 48
-
-    bottomLeftRadius: 24
-    bottomRightRadius: 24
-    topLeftRadius: 24
-    topRightRadius: 24
-
-    color: "#00000000"
-
-    border.color: "#aaffffff"
-    border.width: 1.5
-  }
-
-  // cutout mask
-  Item {
-    id: maskRounded
-    anchors.fill: parent
-    visible: false
-    layer.enabled: true
-
-    Rectangle {
-      anchors.fill: parent
-      anchors.margins: 8
-      anchors.leftMargin: anchors.margins + 48
-
-      bottomLeftRadius: 24
-      bottomRightRadius: 24
-      topLeftRadius: 24
-      topRightRadius: 24
-
-      color: "#ffffffff"
     }
   }
 
@@ -98,14 +89,56 @@ PanelWindow {
   MultiEffect {
     anchors.fill: parent
     source: glassSource
+    layer.smooth: true
 
     maskEnabled: true
-    maskSource: maskRounded
+    maskSource: maskCutout
     maskInverted: true
 
     maskThresholdMin: 0.9
     maskThresholdMax: 1.0
     maskSpreadAtMin: 0.0
     maskSpreadAtMax: 1.0
+  }
+
+  // border
+  Shape {
+    anchors.fill: parent
+    layer.enabled: true
+    layer.samples: 8
+    layer.smooth: true
+
+    ShapePath {
+      strokeColor: "#99ffffff"
+      strokeWidth: 1.5
+      fillColor: "#00000000"
+
+      startX: 54 - 1;
+      startY: 8 + 24;
+      PathLine { x: 54 - 1; y: root.height - 8 - 24 }
+      PathArc {
+        x: 54 + 24; y: root.height - 8
+        radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
+      }
+      PathLine { x: root.width - 8 - 24; y: root.height - 8 }
+      PathArc {
+        x: root.width - 8; y: root.height - 8 - 24
+        radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
+      }
+      PathLine { x: root.width - 8; y: 8 + 24 }
+      PathArc {
+        x: root.width - 8 - 24; y: 8 - 1
+        radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
+      }
+      PathLine { x: 54 + 24; y: 8 - 1 }
+      PathArc {
+        x: 54 - 1; y: 8 + 24
+        radiusX: 24; radiusY: 24
+        direction: PathArc.Counterclockwise
+      }
+    }
   }
 }

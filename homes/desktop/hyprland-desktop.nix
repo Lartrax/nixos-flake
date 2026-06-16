@@ -5,7 +5,7 @@ let
     # networkmanagerapplet
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
 
-    ${pkgs.waybar}/bin/waybar &
+    #${pkgs.waybar}/bin/waybar &
 
     # notification daemon
     ${pkgs.mako}/bin/mako &
@@ -55,7 +55,6 @@ in
     "XDG_SESSION_TYPE" = "wayland";
     "XDG_SESSION_DESKTOP" = "Hyprland";
     "QT_WAYLAND_DISABLE_WINDOWDECORATION" = "1";
-    "QT_QPA_PLATFORMTHEME" = "qt5ct";
     "NIXOS_OZONE_WL" = "1";
     "GDK_SCALE" = "2";
   };
