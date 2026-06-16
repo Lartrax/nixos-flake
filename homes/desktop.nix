@@ -6,7 +6,7 @@
 
     ./apps/brave.nix
     ./apps/dolphin.nix
-    ./apps/kitty.nix
+    ./apps/foot.nix
     ./apps/easyeffects.nix
     ./apps/dolphin-emu.nix
 

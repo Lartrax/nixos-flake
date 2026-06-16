@@ -75,7 +75,7 @@ PanelWindow {
 
     Rectangle {
       anchors.fill: parent
-      color: "#88ffffff"
+      color: "#aaffffff"
     }
   }
 
@@ -103,13 +103,13 @@ PanelWindow {
     layer.smooth: true
 
     ShapePath {
-      strokeColor: "#99ffffff"
+      strokeColor: "#bbffffff"
       strokeWidth: 1.5
       fillColor: "#00000000"
 
-      startX: 54 - 1;
+      startX: 54;
       startY: 8 + 24;
-      PathLine { x: 54 - 1; y: root.height - 8 - 24 }
+      PathLine { x: 54; y: root.height - 8 - 24 }
       PathArc {
         x: 54 + 24; y: root.height - 8
         radiusX: 24; radiusY: 24
@@ -123,13 +123,13 @@ PanelWindow {
       }
       PathLine { x: root.width - 8; y: 8 + 24 }
       PathArc {
-        x: root.width - 8 - 24; y: 8 - 1
+        x: root.width - 8 - 24; y: 8
         radiusX: 24; radiusY: 24
         direction: PathArc.Counterclockwise
       }
-      PathLine { x: 54 + 24; y: 8 - 1 }
+      PathLine { x: 54 + 24; y: 8 }
       PathArc {
-        x: 54 - 1; y: 8 + 24
+        x: 54; y: 8 + 24
         radiusX: 24; radiusY: 24
         direction: PathArc.Counterclockwise
       }

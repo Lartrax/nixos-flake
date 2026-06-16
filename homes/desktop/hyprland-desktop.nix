@@ -70,7 +70,7 @@ in
       monitor = ",preferred,auto,auto";
 
       # Programs
-      "$terminal" = "kitty";
+      "$terminal" = "foot";
       "$fileManager" = "dolphin";
       "$menu" = "rofi -show drun -show-icons";
 
@@ -78,9 +78,9 @@ in
 
       # Look and feel
       general = {
-        gaps_in = 2;
-        gaps_out = 7;
-        border_size = 2;
+        gaps_in = 1;
+        gaps_out = 8;
+        border_size = 1;
 
         "col.active_border" = "rgba(D75BC1ff) rgba(EB9592ff) 45deg";
         "col.inactive_border" = "rgba(C49AE5ff) rgba(C89DE6ff) 45deg";
@@ -98,14 +98,14 @@ in
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 22;
 
         # Change transparency of focused and unfocused windows
-        active_opacity = 0.95;
-        inactive_opacity = 0.9;
+        active_opacity = 0.9;
+        inactive_opacity = 0.75;
 
         shadow = {
-          enabled = true;
+          enabled = false;
           ignore_window = true;
           range = 14;
           render_power = 2;
