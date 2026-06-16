@@ -8,6 +8,7 @@ import QtQuick.Effects
 import QtQuick.Shapes
 
 PanelWindow {
+  id: root
   anchors {
     top: true
     left: true
@@ -18,17 +19,24 @@ PanelWindow {
   // implicitHeight: 48
   color: "#00000000"
 
-  Item {
+  Shape {
     anchors.fill: parent
 
     ShapePath {
       strokeColor: "#ffff0000"
-      strokeWidth: 16
+      strokeWidth: 2
       fillColor: "#00000000"
 
-      startX: 0
-      startY: 50
-      PathLine { x: .width; y: .height }
+      startX: 54;
+      startY: 8 + 24;
+      PathLine { x: 54; y: root.height - 8 - 24 }
+      PathArc {
+        x: 54 + 24; y: root.height - 8
+        radiusX: 24; radiusY: 24
+      }
+      PathLine { x: root.width - 8; y: root.height - 8 }
+      PathLine { x: root.width - 8; y: 8 }
+      PathLine { x: 54; y: 8 }
     }
   }
 
