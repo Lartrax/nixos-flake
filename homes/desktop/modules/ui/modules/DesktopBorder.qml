@@ -136,7 +136,6 @@ PanelWindow {
     }
   }
 
-  // shadow mask/source
   Rectangle {
     id: shadowSource
     anchors {
@@ -148,28 +147,47 @@ PanelWindow {
       leftMargin: 54
     }
     radius: 24
-    color: "#00ffffff"
+    color: "#00000000"
+    border.color: "#ffffffff"
+    border.width: 1
+    antialiasing: true
     visible: false
     layer.enabled: true
     layer.samples: 8
   }
 
-  // shadow effect
+  Rectangle {
+    id: shadowMask
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+      bottom: parent.bottom
+      margins: 8
+      leftMargin: 54
+    }
+    radius: 24
+    color: "#ffffffff"
+    visible: false
+    layer.enabled: true
+    layer.samples: 8
+  }
+
   MultiEffect {
     id: innerShadow
     anchors.fill: shadowSource
     source: shadowSource
 
     shadowEnabled: true
-    shadowColor: "#ff000000"
-    shadowBlur: 0.9
+    shadowColor: "#99000000"
+    shadowBlur: 0.6
     shadowHorizontalOffset: 0
-    shadowVerticalOffset: 3
+    shadowVerticalOffset: 0
 
     maskEnabled: true
-    maskSource: shadowSource
-    maskInverted: true
-    maskThresholdMin: 0.0
+    maskSource: shadowMask
+    maskInverted: false
+    maskThresholdMin: 0.5
     maskThresholdMax: 1.0
   }
 }
