@@ -5,6 +5,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Effects
+import QtQuick.Shapes
 
 PanelWindow {
   anchors {
@@ -16,6 +17,20 @@ PanelWindow {
 
   // implicitHeight: 48
   color: "#00000000"
+
+  Item {
+    anchors.fill: parent
+
+    ShapePath {
+      strokeColor: "#ffff0000"
+      strokeWidth: 16
+      fillColor: "#00000000"
+
+      startX: 0
+      startY: 50
+      PathLine { x: .width; y: .height }
+    }
+  }
 
   // glass base
   Item {
