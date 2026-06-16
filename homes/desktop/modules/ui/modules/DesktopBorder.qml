@@ -104,7 +104,7 @@ PanelWindow {
     layer.smooth: true
 
     ShapePath {
-      strokeColor: "#bbffffff"
+      strokeColor: "#ccffffff"
       strokeWidth: 1.5
       fillColor: "#00000000"
 

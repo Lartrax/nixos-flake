@@ -30,6 +30,8 @@ PanelWindow {
     anchors.fill: parent
     visible: false
     layer.enabled: true
+    layer.samples: 8
+    layer.smooth: true
 
     ShapePath {
       fillColor: "#ff000000"
@@ -63,12 +65,14 @@ PanelWindow {
     }
   }
 
-  // edge-only source for an inset shadow.
+  // edge-only source for inset shadow
   Shape {
     id: shadowEdge
     anchors.fill: parent
     visible: false
     layer.enabled: true
+    layer.samples: 8
+    layer.smooth: true
 
     ShapePath {
       strokeColor: "#ffffffff"
@@ -108,9 +112,11 @@ PanelWindow {
     id: innerShadow
     anchors.fill: parent
     source: shadowEdge
+    layer.samples: 8
+    layer.smooth: true
 
     shadowEnabled: true
-    shadowColor: "#26000000"
+    shadowColor: "#ff000000"
     shadowBlur: 0.6
     shadowHorizontalOffset: 0
     shadowVerticalOffset: 0
@@ -119,6 +125,8 @@ PanelWindow {
   MultiEffect {
     anchors.fill: parent
     source: innerShadow
+    layer.samples: 8
+    layer.smooth: true
 
     maskEnabled: true
     maskSource: maskCutout
