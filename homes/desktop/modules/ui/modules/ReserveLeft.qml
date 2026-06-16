@@ -1,6 +1,4 @@
 import Quickshell
-import Quickshell.Wayland
-import Quickshell.Hyprland
 import QtQuick
 
 PanelWindow {
@@ -9,5 +7,9 @@ PanelWindow {
     left: true
     bottom: true
   }
+
   implicitWidth: 54
+  exclusiveZone: 54
+  aboveWindows: false
+  color: "#00000000"
 }
