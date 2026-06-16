@@ -135,4 +135,41 @@ PanelWindow {
       }
     }
   }
+
+  // shadow mask/source
+  Rectangle {
+    id: shadowSource
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+      bottom: parent.bottom
+      margins: 8
+      leftMargin: 54
+    }
+    radius: 24
+    color: "#00ffffff"
+    visible: false
+    layer.enabled: true
+    layer.samples: 8
+  }
+
+  // shadow effect
+  MultiEffect {
+    id: innerShadow
+    anchors.fill: shadowSource
+    source: shadowSource
+
+    shadowEnabled: true
+    shadowColor: "#ff000000"
+    shadowBlur: 0.9
+    shadowHorizontalOffset: 0
+    shadowVerticalOffset: 3
+
+    maskEnabled: true
+    maskSource: shadowSource
+    maskInverted: true
+    maskThresholdMin: 0.0
+    maskThresholdMax: 1.0
+  }
 }
