@@ -5,7 +5,7 @@ let
     # networkmanagerapplet
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
 
-    #${pkgs.waybar}/bin/waybar &
+    # ${pkgs.waybar}/bin/waybar &
 
     # notification daemon
     ${pkgs.mako}/bin/mako &
@@ -25,7 +25,7 @@ let
 in
 {
   imports = [
-    ./modules/waybar-desktop.nix
+    # ./modules/waybar-desktop.nix
     ./modules/mako.nix
     ./modules/rofi-desktop.nix
     ./modules/swww.nix
@@ -79,11 +79,11 @@ in
       # Look and feel
       general = {
         gaps_in = 1;
-        gaps_out = 8;
+        gaps_out = 12;
         border_size = 1;
 
-        "col.active_border" = "rgba(D75BC1ff) rgba(EB9592ff) 45deg";
-        "col.inactive_border" = "rgba(C49AE5ff) rgba(C89DE6ff) 45deg";
+        "col.active_border" = "rgba(FFFFFFff) rgba(FFFFFFcc) 45deg";
+        "col.inactive_border" = "rgba(FFFFFFcc) rgba(FFFFFFcc) 45deg";
 
         resize_on_border = true;
 
@@ -91,8 +91,8 @@ in
       };
 
       group = {
-        "col.border_active" = "rgba(DC7BC1ff) rgba(EB9592ff) 45deg";
-        "col.border_inactive" = "rgba(C49AE5ff) rgba(C89DE6ff) 45deg";
+        "col.border_active" = "rgba(FFFFFFff) rgba(FFFFFFcc) 45deg";
+        "col.border_inactive" = "rgba(FFFFFFcc) rgba(FFFFFFcc) 45deg";
         "col.border_locked_active" = "rgba(FFFFFFff) rgba(FFFFFFff) 45deg";
         "col.border_locked_inactive" = "rgba(FFFFFFcc) rgba(FFFFFFcc) 45deg";
       };
@@ -105,11 +105,11 @@ in
         inactive_opacity = 0.75;
 
         shadow = {
-          enabled = false;
+          enabled = true;
           ignore_window = true;
-          range = 14;
+          range = 4;
           render_power = 2;
-          color = "rgba(FFFFFF80)";
+          color = "rgba(00000022)";
           offset = "0 0";
         };
 
@@ -137,7 +137,10 @@ in
 
       animations = {
         enabled = true;
-        # Just use default curves
+
+        animation = [
+          "workspaces, 1, 6, default, slidevert"
+        ];
       };
 
       dwindle = {
@@ -220,8 +223,8 @@ in
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
         # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod, mouse_up, workspace, e+1"
+        "$mainMod, mouse_down, workspace, e-1"
 
         # Move windows with mainMod + SHIFT + j/k/l/ø
         "$mainMod SHIFT, l, movewindow, u"

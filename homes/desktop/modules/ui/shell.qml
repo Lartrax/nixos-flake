@@ -6,7 +6,8 @@ ShellRoot {
   ReserveTop {}
   ReserveRight {}
   ReserveBottom {}
+  LeftTray {}
+  BottomTray {}
   DesktopBorderShadow {}
   DesktopBorder {}
-  BottomTray {}
-}
+  }
