@@ -8,4 +8,5 @@ ShellRoot {
   ReserveBottom {}
   DesktopBorderShadow {}
   DesktopBorder {}
+  BottomTray {}
 }
