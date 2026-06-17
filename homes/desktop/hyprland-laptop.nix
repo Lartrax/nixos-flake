@@ -5,7 +5,7 @@ let
     # networkmanagerapplet
     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
 
-    ${pkgs.waybar}/bin/waybar &
+    # ${pkgs.waybar}/bin/waybar &
 
     # notification daemon
     ${pkgs.mako}/bin/mako &
@@ -17,12 +17,15 @@ let
     ${pkgs.swww}/bin/swww-daemon &
 
     # start bluelight filter daemon
-    ${pkgs.hyprsunset}/bin/hyprsunset
+    ${pkgs.hyprsunset}/bin/hyprsunset &
+
+    # start qt ui
+    ${pkgs.quickshell}/bin/quickshell
   '';
 in
 {
   imports = [
-    ./modules/waybar-laptop.nix
+    # ./modules/waybar-laptop.nix
     ./modules/mako.nix
     ./modules/rofi-laptop.nix
     ./modules/swww.nix
@@ -30,6 +33,7 @@ in
     ./modules/networkmanagerapplet.nix
     ./modules/catppuccin-cursors.nix
     ./modules/hyprsunset.nix
+    ./modules/quickshell.nix
   ];
 
   xdg.portal.enable = true;
@@ -74,12 +78,12 @@ in
 
       # Look and feel
       general = {
-        gaps_in = 2;
-        gaps_out = 7;
-        border_size = 2;
+        gaps_in = 1;
+        gaps_out = 12;
+        border_size = 1;
 
-        "col.active_border" = "rgba(D75BC1ff) rgba(EB9592ff) 45deg";
-        "col.inactive_border" = "rgba(C49AE5ff) rgba(C89DE6ff) 45deg";
+        "col.active_border" = "rgba(FFFFFFff) rgba(FFFFFFcc) 45deg";
+        "col.inactive_border" = "rgba(FFFFFFcc) rgba(FFFFFFcc) 45deg";
 
         resize_on_border = true;
 
@@ -87,25 +91,25 @@ in
       };
 
       group = {
-        "col.border_active" = "rgba(DC7BC1ff) rgba(EB9592ff) 45deg";
-        "col.border_inactive" = "rgba(C49AE5ff) rgba(C89DE6ff) 45deg";
+        "col.border_active" = "rgba(FFFFFFff) rgba(FFFFFFcc) 45deg";
+        "col.border_inactive" = "rgba(FFFFFFcc) rgba(FFFFFFcc) 45deg";
         "col.border_locked_active" = "rgba(FFFFFFff) rgba(FFFFFFff) 45deg";
         "col.border_locked_inactive" = "rgba(FFFFFFcc) rgba(FFFFFFcc) 45deg";
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 22;
 
         # Change transparency of focused and unfocused windows
         active_opacity = 0.9;
-        inactive_opacity = 0.85;
+        inactive_opacity = 0.75;
 
         shadow = {
           enabled = true;
           ignore_window = true;
-          range = 14;
+          range = 4;
           render_power = 2;
-          color = "rgba(FFFFFF80)";
+          color = "rgba(00000022)";
           offset = "0 0";
         };
 
@@ -133,7 +137,10 @@ in
 
       animations = {
         enabled = true;
-        # Just use default curves
+
+        animation = [
+          "workspaces, 1, 6, default, slidevert"
+        ];
       };
 
       dwindle = {
@@ -215,8 +222,8 @@ in
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
         # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod, mouse_up, workspace, e+1"
+        "$mainMod, mouse_down, workspace, e-1"
 
         # Move windows with mainMod + SHIFT + j/k/l/ø
         "$mainMod SHIFT, l, movewindow, u"
