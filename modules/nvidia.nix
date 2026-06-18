@@ -1,7 +1,8 @@
 { pkgs, config, ... }:
 
 {
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "nvidia-x11"
       "nvidia-settings"
@@ -31,20 +32,7 @@
     # Enable the Nvidia settings menu
     nvidiaSettings = true;
     # Select driver version
-    package = let
-      base = config.boot.kernelPackages.nvidiaPackages.latest;
-      cachyos-nvidia-patch = pkgs.fetchpatch {
-        url =
-          "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/nvidia/nvidia-utils/kernel-6.19.patch";
-        sha256 = "sha256-YuJjSUXE6jYSuZySYGnWSNG5sfVei7vvxDcHx3K+IN4=";
-      };
-
-      driverAttr = if config.hardware.nvidia.open then "open" else "bin";
-    in base // {
-      ${driverAttr} = base.${driverAttr}.overrideAttrs (oldAttrs: {
-        patches = (oldAttrs.patches or [ ]) ++ [ cachyos-nvidia-patch ];
-      });
-    };
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   environment.sessionVariables = {
