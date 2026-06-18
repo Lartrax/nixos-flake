@@ -16,11 +16,20 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, nix-cachyos-kernel, home-manager
-    , nix-minecraft, hyprland }@inputs:
-    let system = "x86_64-linux";
-
-    in {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-wsl,
+      nix-cachyos-kernel,
+      home-manager,
+      nix-minecraft,
+      hyprland,
+    }@inputs:
+    let
+      system = "x86_64-linux";
+    in
+    {
 
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
@@ -33,15 +42,17 @@
             ./modules/fonts/monaspace.nix
             ./modules/audio.nix
             ./modules/nvidia.nix
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
-            })
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+              }
+            )
             ./modules/kernels/cachyos-lto.nix
             ./modules/automount.nix
             ./modules/fish.nix
             ./modules/network.nix
             ./modules/ssh.nix
-            ./modules/minecraft.nix
           ];
         };
         laptop = nixpkgs.lib.nixosSystem {

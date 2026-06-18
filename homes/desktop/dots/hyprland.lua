@@ -18,7 +18,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal    = "foot"
 local fileManager = "dolphin"
-local menu        = "rofi"
+local menu        = "rofi -show drun -show-icons"
 
 
 -------------------
@@ -33,8 +33,8 @@ local menu        = "rofi"
 hl.on("hyprland.start", function ()
   hl.exec_cmd("nm-applet")
   hl.exec_cmd("mako")
-  hl.exec_cmd("swww img ~/nixos-flake/assets/wallpaper.webp")
-  hl.exec_cmd("swww-daemon")
+  hl.exec_cmd("awww img ~/nixos-flake/assets/wallpaper.webp")
+  hl.exec_cmd("awww-daemon")
   hl.exec_cmd("hyprsunset")
   hl.exec_cmd("quickshell")
 end)
@@ -126,7 +126,7 @@ hl.config({
             enabled           = true,
             size              = 4,
             passes            = 2,
-            noise             = 0.02
+            noise             = 0.02,
             new_optimizations = true,
             ignore_opacity    = true,
             xray              = false,
@@ -267,10 +267,11 @@ local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + delete", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + CTRL + space", hl.dsp.exec_cmd(menu))
+hl.bind("CTRL + space", hl.dsp.exec_cmd(menu))
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + ALT + return", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("makoctl dismiss"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -386,3 +387,6 @@ hl.layer_rule({
     match = { namespace = "quickshell-border-shadow" },
     blur  = false,
 })
+
+
+

@@ -4,7 +4,7 @@
   imports = [
     ./modules/mako.nix
     ./modules/rofi-desktop.nix
-    ./modules/swww.nix
+    ./modules/awww.nix
     ./modules/hyprlock.nix
     ./modules/networkmanagerapplet.nix
     ./modules/catppuccin-cursors.nix
@@ -18,9 +18,9 @@
     xdg-desktop-portal-hyprland
   ];
 
-  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
 
-  home.file.".config/hypr/hyprland.lua" = {
-    source = ./dots/hyprland.lua;
+    extraConfig = builtins.readFile ./dots/hyprland.lua;
   };
 }
