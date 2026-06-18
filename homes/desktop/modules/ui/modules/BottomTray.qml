@@ -12,7 +12,7 @@ PanelWindow {
   mask: Region{ item: hoverRegion }
 
   property bool open: false
-  property bool proximityHover: false
+  // property bool proximityHover: false
 
   implicitHeight: 120
   color: "#00000000"
@@ -86,16 +86,16 @@ PanelWindow {
     height: (100 * scale) + 20 // 8 4 8
     width: parent.width / 3
 
-    Rectangle {
-      id: ledge
-      anchors.top: parent.top
-      anchors.horizontalCenter: parent.horizontalCenter
+    // Rectangle {
+    //   id: ledge
+    //   anchors.top: parent.top
+    //   anchors.horizontalCenter: parent.horizontalCenter
 
-      height: 4
-      width: parent.width - 48
-      radius: 4
-      color: drawer.ledgeColor
-    }
+    //   height: 4
+    //   width: parent.width - 48
+    //   radius: 4
+    //   color: drawer.ledgeColor
+    // }
 
     Rectangle {
       anchors.top: ledge.bottom
@@ -114,9 +114,9 @@ PanelWindow {
     Behavior on scale {
       NumberAnimation { duration: 120; easing.type: Easing.OutCubic }
     }
-    Behavior on ledgeColor {
-      ColorAnimation { duration: 400; easing.type: Easing.OutExpo }
-    }
+    // Behavior on ledgeColor {
+    //   ColorAnimation { duration: 400; easing.type: Easing.OutExpo }
+    // }
   }
 
   Item {
@@ -127,14 +127,23 @@ PanelWindow {
 
     height: drawer.height + 48
 
-    MouseArea {
-      id: hoverProxy
-      anchors.fill: parent
-      hoverEnabled: true
+    // MouseArea {
+    //   id: hoverProxy
+    //   anchors.fill: parent
+    //   hoverEnabled: true
+    //   acceptedButtons: Qt.NoButton
 
-      onEntered: root.proximityHover = true
-      onExited: root.proximityHover = false
-    }
+    //   onEntered: root.proximityHover = true
+    //   onExited: root.proximityHover = false
+    // }
+
+    // Rectangle {
+    //   anchors.left: parent.left
+    //   anchors.right: parent.right
+    //   anchors.bottom: parent.bottom
+    //   height: drawer.height
+    //   color: "#22ff0000"
+    // }
 
     MouseArea {
       id: hoverAction

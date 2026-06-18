@@ -16,7 +16,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal    = "foot"
+local terminal    = "foot --working-directory ~"
 local fileManager = "dolphin"
 local menu        = "rofi -show drun -show-icons"
 
@@ -129,7 +129,7 @@ hl.config({
             noise             = 0.02,
             new_optimizations = true,
             ignore_opacity    = true,
-            xray              = false,
+            xray              = true,
         },
     },
 
