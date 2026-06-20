@@ -21,7 +21,7 @@ PanelWindow {
 
   color: "#00000000"
 
-  // right half glass frame
+  // static glass frame
   Shape {
     id: glass
     anchors.fill: parent
@@ -32,9 +32,13 @@ PanelWindow {
       fillColor: "#aaffffff"
       strokeColor: "#00000000"
 
-      startX: root.width / 2;
+      startX: 56;
       startY: 0;
-      PathLine { relativeX: 0; y: 8 }
+      PathLine { relativeX: 0; y: 32 }
+      PathArc {
+        relativeX: 24; relativeY: -24
+        radiusX: 24; radiusY: 24
+      }
       PathLine { x: root.width - 32; relativeY: 0 }
       PathArc {
         relativeX: 24; relativeY: 24
@@ -66,8 +70,12 @@ PanelWindow {
       strokeColor: "#ccffffff"
       strokeWidth: 1.5
 
-      startX: root.width / 2;
-      startY: 8;
+      startX: 56;
+      startY: 32;
+      PathArc {
+        relativeX: 24; relativeY: -24
+        radiusX: 24; radiusY: 24
+      }
       PathLine { x: root.width - 32; relativeY: 0 }
       PathArc {
         relativeX: 24; relativeY: 24

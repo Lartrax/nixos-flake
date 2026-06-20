@@ -80,15 +80,9 @@ PanelWindow {
       fillColor: "#aaffffff"
       strokeColor: "#00000000"
 
-      startX: root.width / 2;
+      startX: 56;
       startY: 0;
       PathLine { relativeX: 0; relativeY: 8 }
-      PathLine { x: 56 + 24; relativeY: 0 }
-      PathArc {
-        x: 56; relativeY: 24
-        radiusX: 24; radiusY: 24
-        direction: PathArc.Counterclockwise
-      }
       PathLine { relativeX: 0; y: root.height / 2 }
       PathLine { x: 0; relativeY: 0 }
       PathLine { x: 0; y: 0 }
@@ -108,14 +102,8 @@ PanelWindow {
       strokeColor: "#ccffffff"
       strokeWidth: 1.5
 
-      startX: root.width / 2;
-      startY: 8;
-      PathLine { x: 56 + 24; relativeY: 0 }
-      PathArc {
-        x: 56; relativeY: 24
-        radiusX: 24; radiusY: 24
-        direction: PathArc.Counterclockwise
-      }
+      startX: 56;
+      startY: 32;
       PathLine { relativeX: 0; y: root.height / 2 }
     }
   }
