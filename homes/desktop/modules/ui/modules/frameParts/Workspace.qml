@@ -1,9 +1,7 @@
 import Quickshell
-import Quickshell.Wayland
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Shapes
 
@@ -101,7 +99,7 @@ Item {
         bottomPadding: 4
 
         text: iconFor(workspace)
-        color: isActive(workspace) ? "#33000000" : "#22ffffff"
+        color: isActive(workspace) ? "#55000000" : "#55ffffff"
         font {
           pixelSize: 20
           bold: false

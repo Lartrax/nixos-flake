@@ -1,10 +1,5 @@
 import Quickshell
-import Quickshell.Wayland
-import Quickshell.Hyprland
 import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls
-import QtQuick.Effects
 import QtQuick.Shapes
 
 Item {
