@@ -8,6 +8,5 @@ ShellRoot {
   ReserveBottom {}
   LeftTray {}
   BottomTray {}
-  WorkspaceFrame {}
-  StaticFrame {}
+  FrameScope {}
 }

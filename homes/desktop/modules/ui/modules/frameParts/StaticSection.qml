@@ -7,26 +7,14 @@ import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Shapes
 
-PanelWindow {
+Item {
   id: root
-  exclusionMode: ExclusionMode.Ignore
-  aboveWindows: true
-  anchors {
-    top: true
-    left: true
-    right: true
-    bottom: true
-  }
-  mask: Region{}
-
-  color: "#00000000"
+  anchors.fill: parent
 
   // static glass frame
   Shape {
     id: glass
     anchors.fill: parent
-    visible: true
-    layer.enabled: true
 
     ShapePath {
       fillColor: "#aaffffff"
@@ -71,7 +59,8 @@ PanelWindow {
       strokeWidth: 1.5
 
       startX: 56;
-      startY: 32;
+      startY: root.height / 2;
+      PathLine { relativeX: 0; y: 32 }
       PathArc {
         relativeX: 24; relativeY: -24
         radiusX: 24; radiusY: 24
