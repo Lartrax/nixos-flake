@@ -8,6 +8,8 @@ ShellRoot {
   ReserveBottom {}
   LeftTray {}
   BottomTray {}
-  DesktopBorderShadow {}
-  DesktopBorder {}
-  }
+  // DesktopBorderShadow {}
+  // DesktopBorder {}
+  WorkspaceFrame {}
+  RightFrame {}
+}
