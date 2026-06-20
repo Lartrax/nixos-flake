@@ -13,7 +13,7 @@ PanelWindow {
 
   // Drawer state
   property bool open: false
-  property int animMs: 120
+  property int animMs: 80
 
   // Window size stays fixed, only inner drawer moves
   implicitWidth: 200
