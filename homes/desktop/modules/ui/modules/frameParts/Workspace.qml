@@ -7,19 +7,15 @@ import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Shapes
 
-PanelWindow {
+Item {
   id: root
-  exclusionMode: ExclusionMode.Ignore
-  aboveWindows: true
   anchors {
-    top: true
-    left: true
-    right: true
-    bottom: true
+    top: parent.top
+    left: parent.left
+    bottom: parent.bottom
   }
-  mask: Region{}
 
-  color: "#00000000"
+  implicitWidth: 56
 
   property var workspaceList: Hyprland.workspaces.values.filter(w => w.id != null)
   property list<string> icons: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
@@ -86,25 +82,6 @@ PanelWindow {
       PathLine { relativeX: 0; y: root.height / 2 }
       PathLine { x: 0; relativeY: 0 }
       PathLine { x: 0; y: 0 }
-    }
-  }
-
-  // glass border
-  Shape {
-    id: border
-    anchors.fill: parent
-    layer.enabled: true
-    layer.samples: 4
-    layer.smooth: true
-
-    ShapePath {
-      fillColor: "#00000000"
-      strokeColor: "#ccffffff"
-      strokeWidth: 1.5
-
-      startX: 56;
-      startY: 32;
-      PathLine { relativeX: 0; y: root.height / 2 }
     }
   }
 
