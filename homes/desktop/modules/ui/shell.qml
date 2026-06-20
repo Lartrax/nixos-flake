@@ -7,6 +7,6 @@ ShellRoot {
   ReserveRight {}
   ReserveBottom {}
   LeftTray {}
-  BottomTray {}
+  QuickAccess {}
   FrameScope {}
 }

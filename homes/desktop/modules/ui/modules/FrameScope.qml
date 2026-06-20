@@ -1,6 +1,4 @@
 import Quickshell
-import Quickshell.Wayland
-import Quickshell.Hyprland
 import QtQuick
 
 import "./frameParts" as Frame
@@ -29,6 +27,8 @@ Scope {
         color: "#00000000"
 
         Frame.Workspace {}
+
+        Frame.Menu {}
 
         Frame.StaticSection {}
       }
