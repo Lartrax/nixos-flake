@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick
 import QtQuick.Shapes
+import QtQuick.Effects
 
 import "../widgets"
 
@@ -18,6 +19,8 @@ Item {
   Shape {
     id: glass
     anchors.fill: parent
+    visible: false
+    layer.enabled: true
 
     ShapePath {
       fillColor: "#aaffffff"
@@ -63,12 +66,57 @@ Item {
     }
   }
 
+  // clock cutout
+  MultiEffect {
+    anchors.fill: parent
+    source: glass
+
+    maskEnabled: true
+    maskSource: clockMask
+    maskInverted: true
+
+    maskThresholdMin: 0.5
+    maskThresholdMax: 1.0
+    maskSpreadAtMin: 1.0
+    maskSpreadAtMax: 0.0
+  }
+
   Item {
+    id: menu
+    anchors.top: parent.top
     anchors.left: parent.left
     anchors.bottom: parent.bottom
 
-    ClockWidget {
-      anchors.centerIn: parent
+    implicitWidth: 56
+
+    Rectangle {
+      anchors.fill: parent
+      color: "#aaff0000"
+    }
+
+    Item {
+      id: clockMask
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      anchors.bottomMargin: 32
+
+      visible: true
+      layer.enabled: true
+
+      Rectangle {
+        anchors.fill: parent
+        color: "#aa00ff00"
+        implicitHeight: 100
+      }
+
+      ClockWidget {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        color: "#ff000000"
+        font.pixelSize: 20
+      }
     }
   }
+
 }
