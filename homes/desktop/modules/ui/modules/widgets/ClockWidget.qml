@@ -1,5 +1,7 @@
 import QtQuick
 
+import "../data"
+
 Text {
-  text: Time.hour
+  text: Time.hour + "\n" + Time.minute
 }
