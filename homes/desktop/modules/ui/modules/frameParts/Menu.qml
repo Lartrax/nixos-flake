@@ -89,9 +89,38 @@ Item {
 
     implicitWidth: 56
 
+    // Rectangle {
+    //   anchors.fill: parent
+    //   color: "#aaff0000"
+    // }
+
     Rectangle {
-      anchors.fill: parent
-      color: "#aaff0000"
+      id: optionsPill
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: clockMask.top
+      anchors.margins: 8
+
+      implicitHeight: 72
+
+      color: "#55ffffff"
+      border.color: "#aaffffff"
+      border.width: 1.0
+      radius: 24
+
+      Column {
+        anchors.centerIn: parent
+        spacing: 4
+
+        Text {
+          text: "󰤥"
+          font.pixelSize: 20
+        }
+        Text {
+          text: "󰤥"
+          font.pixelSize: 20
+        }
+      }
     }
 
     Item {
@@ -101,22 +130,18 @@ Item {
       anchors.bottom: parent.bottom
       anchors.bottomMargin: 32
 
-      visible: true
+      implicitHeight: clock.height
+
+      visible: false
       layer.enabled: true
 
-      Rectangle {
-        anchors.fill: parent
-        color: "#aa00ff00"
-        implicitHeight: 100
-      }
-
       ClockWidget {
+        id: clock
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        color: "#ff000000"
+        color: "#aaffffff"
         font.pixelSize: 20
       }
     }
   }
-
 }
