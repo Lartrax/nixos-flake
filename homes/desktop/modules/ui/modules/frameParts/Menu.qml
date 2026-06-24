@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Networking
 import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
@@ -19,8 +20,6 @@ Item {
   Shape {
     id: glass
     anchors.fill: parent
-    visible: false
-    layer.enabled: true
 
     ShapePath {
       fillColor: "#aaffffff"
@@ -66,42 +65,67 @@ Item {
     }
   }
 
-  // clock cutout
-  MultiEffect {
+  Item {
+    id: clockMask
     anchors.fill: parent
-    source: glass
 
-    maskEnabled: true
-    maskSource: clockMask
-    maskInverted: true
+    Item {
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      anchors.bottomMargin: 32
+      implicitWidth: 56
 
-    maskThresholdMin: 0.5
-    maskThresholdMax: 1.0
-    maskSpreadAtMin: 1.0
-    maskSpreadAtMax: 0.0
+      ClockWidget {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+
+        color: "#55000000"
+        font.pixelSize: 20
+      }
+    }
   }
 
   Item {
-    id: menu
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.bottom: parent.bottom
 
+    implicitHeight: pill.height
     implicitWidth: 56
 
-    // Rectangle {
-    //   anchors.fill: parent
-    //   color: "#aaff0000"
-    // }
+    Rectangle {
+      id: pillMask
+      anchors.fill: pill
+      visible: false
+      layer.enabled: true
+
+      color: "#ffffffff"
+      radius: 24
+    }
+
+    MultiEffect {
+      anchors.fill: pillMask
+      source: pillMask
+
+      shadowEnabled: true
+      shadowColor: "#55000000"
+      shadowBlur: 0.2
+
+      maskEnabled: true
+      maskSource: pillMask
+      maskInverted: false
+
+      maskThresholdMin: 0.0
+      maskThresholdMax: 0.2
+      maskSpreadAtMin: 1.0
+      maskSpreadAtMax: 0.0
+    }
 
     Rectangle {
-      id: optionsPill
-      anchors.left: parent.left
-      anchors.right: parent.right
-      anchors.bottom: clockMask.top
-      anchors.margins: 8
-
-      implicitHeight: 72
+      id: pill
+      anchors.centerIn: parent
+      implicitHeight: items.height + 16
+      implicitWidth: parent.width - 16
 
       color: "#55ffffff"
       border.color: "#aaffffff"
@@ -109,38 +133,91 @@ Item {
       radius: 24
 
       Column {
+        id: items
         anchors.centerIn: parent
         spacing: 4
 
         Text {
-          text: "󰤥"
+          color: "#55000000"
+          text: ""
           font.pixelSize: 20
         }
-        Text {
-          text: "󰤥"
-          font.pixelSize: 20
+
+        Repeater {
+          id: network
+          model: {
+            var net = Networking
+            // console.log("wifiEnabled: " + net.wifiEnabled)
+            // console.log("wifiHardwareEnabled: " + net.wifiHardwareEnabled)
+            // console.log("connectivity: " + net.connectivity)
+            return Networking.devices.values.length
+          }
+
+          property var wifi: ({
+            icons: ["󰤯", "󰤟", "󰤢", "󰤥","󰤨"],
+            openConnectionIcons: ["󱛏", "󱛋", "󱛌", "󱛍", "󱛎"],
+            noInternetIcons: ["󰤫", "󰤠", "󰤣", "󰤦", "󰤩"]
+          })
+
+          Text {
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            property var device: Networking.devices.values[index]
+            property string networkStatusIcon: {
+              if (device.type === DeviceType.Wifi) {
+                if (device.state === ConnectionState.Disconnected)
+                  return "󰤮"
+                if (device.state === ConnectionState.Connecting)
+                  return ""
+
+                var net = device.networks.values[0]
+                var getIcons = () => {
+                  if (Networking.connectivity != NetworkConnectivity.Full)
+                    return network.wifi.noInternetIcons
+                  if (net?.security == WifiSecurityType.Open)
+                    return network.wifi.openConnectionIcons
+
+                  return network.wifi.icons
+                }
+
+                if (net?.signalStrength <= 0.1)
+                  return getIcons()[0]
+                if (net?.signalStrength <= 0.25)
+                  return getIcons()[1]
+                if (net?.signalStrength <= 0.5)
+                  return getIcons()[2]
+                if (net?.signalStrength <= 0.75)
+                  return getIcons()[3]
+                if (net?.signalStrength <= 1.0)
+                  return getIcons()[4]
+
+                return "󰤭"
+              }
+
+              if (device.type === DeviceType.Wired) {
+                if (device.state === ConnectionState.Connected) {
+                  // portal or no internet
+                  if (Networking.connectivity != NetworkConnectivity.Full)
+                    return "󰈁!"
+
+                  // connected with internet
+                  return "󰈁"
+                }
+                if (device.state === ConnectionState.Connecting)
+                  return ""
+
+                return "󰈂"
+              }
+
+              // type = DeviceType.None
+              return "󰲊"
+            }
+
+            color: "#55000000"
+            text: networkStatusIcon
+            font.pixelSize: 20
+          }
         }
-      }
-    }
-
-    Item {
-      id: clockMask
-      anchors.left: parent.left
-      anchors.right: parent.right
-      anchors.bottom: parent.bottom
-      anchors.bottomMargin: 32
-
-      implicitHeight: clock.height
-
-      visible: false
-      layer.enabled: true
-
-      ClockWidget {
-        id: clock
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        color: "#aaffffff"
-        font.pixelSize: 20
       }
     }
   }
