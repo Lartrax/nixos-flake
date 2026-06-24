@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Networking
+import Quickshell.Services.Pipewire
 import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
@@ -138,9 +139,65 @@ Item {
         spacing: 4
 
         Text {
+          id: audioIn
+          anchors.horizontalCenter: parent.horizontalCenter
+
+          property var mic: Pipewire.defaultAudioSource
+          property bool micExists: mic != null
+          property bool muted: mic?.audio?.muted ?? false
+
           color: "#55000000"
-          text: ""
+          text: {
+            if (micExists)
+              return muted ? "󰍭" : "󰍬"
+
+            return "󰍮"
+          }
           font.pixelSize: 20
+        }
+
+        Row {
+          id: audioOut
+          anchors.horizontalCenter: parent.horizontalCenter
+          spacing: 4
+
+          property var speaker: Pipewire.defaultAudioSink
+          property bool speakerExists: speaker != null
+          property bool muted: speaker?.audio?.muted ?? false
+          property real volume: speaker?.audio?.volume ?? 0.0
+
+          Text {
+            id: speakerText
+            color: "#55000000"
+            text: ""
+            font.pixelSize: 20
+          }
+
+          Rectangle {
+            id: volumeBorder
+            anchors.top: speakerText.top
+            anchors.bottom: speakerText.bottom
+
+            implicitWidth: 4
+            radius: 4
+
+            color: "#00000000"
+            border.color: "#55000000"
+          }
+
+          Rectangle {
+            id: volumeBar
+            anchors.bottom: speakerText.bottom
+
+            implicitHeight: {
+              console.log(audioOut.volume)
+              return volumeBorder.height * audioOut.volume
+            }
+            implicitWidth: 4
+            radius: 4
+
+            color: audioOut.muted ? "#55ff0000" : "#55000000"
+          }
         }
 
         Repeater {
