@@ -1,11 +1,11 @@
 import Quickshell
 import Quickshell.Networking
-import Quickshell.Services.Pipewire
 import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
 
 import "../widgets"
+import "../data"
 
 Item {
   id: root
@@ -142,11 +142,11 @@ Item {
           id: audioIn
           anchors.horizontalCenter: parent.horizontalCenter
 
-          property var mic: Pipewire.defaultAudioSource
+          property var mic: Pipewire.source
           property bool micExists: mic != null
-          property bool muted: mic?.audio?.muted ?? false
+          property bool muted: Pipewire.sourceMuted
 
-          color: "#55000000"
+          color: muted ? "#99b74d6f" : "#55000000"
           text: {
             if (micExists)
               return muted ? "󰍭" : "󰍬"
@@ -161,10 +161,10 @@ Item {
           anchors.horizontalCenter: parent.horizontalCenter
           spacing: 4
 
-          property var speaker: Pipewire.defaultAudioSink
+          property var speaker: Pipewire.sink
           property bool speakerExists: speaker != null
-          property bool muted: speaker?.audio?.muted ?? false
-          property real volume: speaker?.audio?.volume ?? 0.0
+          property bool muted: Pipewire.sinkMuted
+          property real volume: Pipewire.sinkVolume
 
           Text {
             id: speakerText
@@ -173,42 +173,41 @@ Item {
             font.pixelSize: 20
           }
 
-          Rectangle {
-            id: volumeBorder
+          Item {
+            id: speakerVolume
             anchors.top: speakerText.top
             anchors.bottom: speakerText.bottom
 
-            implicitWidth: 4
-            radius: 4
+            implicitWidth: volumeBorder.width
 
-            color: "#00000000"
-            border.color: "#55000000"
-          }
+            Rectangle {
+              id: volumeBorder
+              anchors.top: parent.top
+              anchors.bottom: parent.bottom
 
-          Rectangle {
-            id: volumeBar
-            anchors.bottom: speakerText.bottom
+              implicitWidth: 4
+              radius: 4
 
-            implicitHeight: {
-              console.log(audioOut.volume)
-              return volumeBorder.height * audioOut.volume
+              color: "#00000000"
+              border.color: audioOut.muted ? "#99b74d6f" : "#55000000"
             }
-            implicitWidth: 4
-            radius: 4
 
-            color: audioOut.muted ? "#55ff0000" : "#55000000"
+            Rectangle {
+              id: volumeBar
+              anchors.bottom: parent.bottom
+
+              implicitHeight: volumeBorder.height * audioOut.volume
+              implicitWidth: 4
+              radius: 4
+
+              color: audioOut.muted ? "#99b74d6f" : "#55000000"
+            }
           }
         }
 
         Repeater {
           id: network
-          model: {
-            var net = Networking
-            // console.log("wifiEnabled: " + net.wifiEnabled)
-            // console.log("wifiHardwareEnabled: " + net.wifiHardwareEnabled)
-            // console.log("connectivity: " + net.connectivity)
-            return Networking.devices.values.length
-          }
+          model: Networking.devices.values.length
 
           property var wifi: ({
             icons: ["󰤯", "󰤟", "󰤢", "󰤥","󰤨"],
@@ -217,13 +216,14 @@ Item {
           })
 
           Text {
+            id: networkIcon
             anchors.horizontalCenter: parent.horizontalCenter
 
             property var device: Networking.devices.values[index]
-            property string networkStatusIcon: {
+            property string statusIcon: {
               if (device.type === DeviceType.Wifi) {
                 if (device.state === ConnectionState.Disconnected)
-                  return "󰤮"
+                  return "󰤭"
                 if (device.state === ConnectionState.Connecting)
                   return ""
 
@@ -248,7 +248,7 @@ Item {
                 if (net?.signalStrength <= 1.0)
                   return getIcons()[4]
 
-                return "󰤭"
+                return "󰤮"
               }
 
               if (device.type === DeviceType.Wired) {
@@ -271,8 +271,17 @@ Item {
             }
 
             color: "#55000000"
-            text: networkStatusIcon
+            text: statusIcon
             font.pixelSize: 20
+
+            RotationAnimation on rotation {
+              loops: Animation.Infinite
+              from: 0
+              to: 360
+              running: device.state === ConnectionState.Connecting
+              alwaysRunToEnd: true
+              duration: 800
+            }
           }
         }
       }
