@@ -8,5 +8,5 @@ ShellRoot {
   ReserveBottom {}
   LeftTray {}
   QuickAccess {}
-  FrameScope {}
+  Frame {}
 }

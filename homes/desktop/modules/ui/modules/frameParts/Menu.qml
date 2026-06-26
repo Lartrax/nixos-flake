@@ -136,7 +136,7 @@ Item {
       Column {
         id: items
         anchors.centerIn: parent
-        spacing: 4
+        spacing: 8
 
         Text {
           id: audioIn
@@ -190,17 +190,19 @@ Item {
 
               color: "#00000000"
               border.color: audioOut.muted ? "#99b74d6f" : "#55000000"
-            }
 
-            Rectangle {
-              id: volumeBar
-              anchors.bottom: parent.bottom
+              Rectangle {
+                id: volumeBar
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.margins: 1.25
 
-              implicitHeight: volumeBorder.height * audioOut.volume
-              implicitWidth: 4
-              radius: 4
+                implicitHeight: (volumeBorder.height - 2.5) * audioOut.volume
+                radius: 4
 
-              color: audioOut.muted ? "#99b74d6f" : "#55000000"
+                color: audioOut.muted ? "#99b74d6f" : "#55000000"
+              }
             }
           }
         }
