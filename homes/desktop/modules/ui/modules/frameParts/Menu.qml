@@ -17,17 +17,38 @@ Item {
   implicitHeight: parent.height / 2
   implicitWidth: parent.width / 2
 
+  property bool menuOpen: false
+  property real scale: menuOpen ? 1.0 : 0.0
+
+  Behavior on scale {
+    NumberAnimation { duration: 120; easing.type: Easing.OutCubic }
+  }
+
   // bottom left glass frame
   Shape {
     id: glass
     anchors.fill: parent
 
     ShapePath {
+      id: path
       fillColor: "#aaffffff"
       strokeColor: "#00000000"
 
+      property real widthAnim: ((root.width / 3) - 24 - 56) * root.scale
+      property real radiusAnim: { Math.min(widthAnim / 2, 24) }
+
       startX: 56;
       startY: 0;
+      PathArc {
+        relativeX: path.radiusAnim; relativeY: path.radiusAnim
+        radiusX: path.radiusAnim; radiusY: path.radiusAnim
+        direction: PathArc.Counterclockwise
+      }
+      PathLine { relativeX: path.widthAnim; relativeY: 0 }
+      PathArc {
+        relativeX: path.radiusAnim; relativeY: path.radiusAnim
+        radiusX: path.radiusAnim; radiusY: path.radiusAnim
+      }
       PathLine { relativeX: 0; y: root.height - 32 }
       PathArc {
         relativeX: 24; relativeY: 24
@@ -56,6 +77,16 @@ Item {
 
       startX: 56;
       startY: 0;
+      PathArc {
+        relativeX: path.radiusAnim; relativeY: path.radiusAnim
+        radiusX: path.radiusAnim; radiusY: path.radiusAnim
+        direction: PathArc.Counterclockwise
+      }
+      PathLine { relativeX: path.widthAnim; relativeY: 0 }
+      PathArc {
+        relativeX: path.radiusAnim; relativeY: path.radiusAnim
+        radiusX: path.radiusAnim; radiusY: path.radiusAnim
+      }
       PathLine { relativeX: 0; y: root.height - 32 }
       PathArc {
         relativeX: 24; relativeY: 24
@@ -285,6 +316,15 @@ Item {
               duration: 800
             }
           }
+        }
+      }
+
+      MouseArea {
+        id: pillPressArea
+        anchors.fill: parent
+
+        onClicked: {
+          root.menuOpen = !root.menuOpen
         }
       }
     }

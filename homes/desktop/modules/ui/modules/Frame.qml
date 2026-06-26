@@ -11,6 +11,7 @@ Scope {
 
     delegate: Component {
       PanelWindow {
+        id: window
         required property var modelData
         screen: modelData
 
@@ -22,7 +23,7 @@ Scope {
           right: true
           bottom: true
         }
-        mask: Region{}
+        mask: Region {}
 
         color: "#00000000"
 
