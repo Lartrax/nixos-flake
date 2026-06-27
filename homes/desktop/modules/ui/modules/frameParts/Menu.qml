@@ -17,11 +17,24 @@ Item {
   implicitHeight: parent.height / 2
   implicitWidth: parent.width / 2
 
-  property bool menuOpen: false
+  property bool menuOpen: Menu.open
   property real scale: menuOpen ? 1.0 : 0.0
 
   Behavior on scale {
     NumberAnimation { duration: 120; easing.type: Easing.OutCubic }
+  }
+
+  // close menu on hover exit
+  MouseArea {
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+
+    implicitHeight: parent.height - 24
+    implicitWidth: 56 + (Math.max((parent.width / 3) - 32, 0) * root.scale)
+
+    hoverEnabled: true
+    // TODO: implement grace period before closing
+    onExited: Menu.setOpen(false)
   }
 
   // bottom left glass frame
@@ -39,6 +52,7 @@ Item {
 
       startX: 56;
       startY: 0;
+      PathLine { relativeX: 0; relativeY: 24 - path.radiusAnim }
       PathArc {
         relativeX: path.radiusAnim; relativeY: path.radiusAnim
         radiusX: path.radiusAnim; radiusY: path.radiusAnim
@@ -77,6 +91,7 @@ Item {
 
       startX: 56;
       startY: 0;
+      PathLine { relativeX: 0; relativeY: 24 - path.radiusAnim }
       PathArc {
         relativeX: path.radiusAnim; relativeY: path.radiusAnim
         radiusX: path.radiusAnim; radiusY: path.radiusAnim
@@ -319,13 +334,10 @@ Item {
         }
       }
 
+      // open menu on pill click
       MouseArea {
-        id: pillPressArea
         anchors.fill: parent
-
-        onClicked: {
-          root.menuOpen = !root.menuOpen
-        }
+        onClicked: Menu.toggleOpen()
       }
     }
   }

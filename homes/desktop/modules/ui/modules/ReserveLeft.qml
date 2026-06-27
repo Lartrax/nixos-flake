@@ -1,15 +1,28 @@
 import Quickshell
 import QtQuick
 
-PanelWindow {
-  anchors {
-    top: true
-    left: true
-    bottom: true
-  }
+Scope {
+  id: root
 
-  implicitWidth: 54
-  exclusiveZone: 54
-  aboveWindows: false
-  color: "#00000000"
+  Variants {
+    model: Quickshell.screens
+
+    delegate: Component {
+      PanelWindow {
+        required property var modelData
+        screen: modelData
+
+        anchors {
+          top: true
+          left: true
+          bottom: true
+        }
+
+        implicitWidth: 56
+        exclusiveZone: 56
+        aboveWindows: false
+        color: "#00000000"
+      }
+    }
+  }
 }
