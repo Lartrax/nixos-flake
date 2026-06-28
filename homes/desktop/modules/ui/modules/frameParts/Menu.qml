@@ -9,6 +9,8 @@ import "../data"
 
 Item {
   id: root
+  required property string screenId
+
   anchors {
     left: parent.left
     bottom: parent.bottom
@@ -17,7 +19,7 @@ Item {
   implicitHeight: parent.height / 2
   implicitWidth: parent.width / 2
 
-  property bool menuOpen: Menu.open
+  property bool menuOpen: Menu.isOpen(root.screenId)
   property real scale: menuOpen ? 1.0 : 0.0
 
   Behavior on scale {
@@ -34,7 +36,7 @@ Item {
 
     hoverEnabled: true
     // TODO: implement grace period before closing
-    onExited: Menu.setOpen(false)
+    onExited: Menu.setOpen(root.screenId, false)
   }
 
   // bottom left glass frame
@@ -337,7 +339,7 @@ Item {
       // open menu on pill click
       MouseArea {
         anchors.fill: parent
-        onClicked: Menu.toggleOpen()
+        onClicked: Menu.toggleOpen(root.screenId)
       }
     }
   }
