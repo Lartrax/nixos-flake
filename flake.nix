@@ -71,6 +71,7 @@
             ./modules/gaming.nix
             ./modules/fish.nix
             ./modules/network.nix
+            ./modules/flatpak.nix
           ];
         };
         wsl = nixpkgs.lib.nixosSystem {
