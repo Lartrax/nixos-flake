@@ -8,6 +8,7 @@
     ./apps/dolphin.nix
     ./apps/foot.nix
     ./apps/dolphin-emu.nix
+    ./apps/parsec.nix
 
     ./cli-tools/fastfetch.nix
     ./cli-tools/git.nix
