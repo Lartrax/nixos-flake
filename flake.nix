@@ -14,6 +14,8 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    inir.url = "github:snowarch/inir";
   };
 
   outputs =
@@ -25,6 +27,7 @@
       home-manager,
       nix-minecraft,
       hyprland,
+      inir,
     }@inputs:
     let
       system = "x86_64-linux";
