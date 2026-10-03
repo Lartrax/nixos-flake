@@ -5,7 +5,7 @@
     ./modules/awww.nix
     ./modules/networkmanagerapplet.nix
     ./modules/catppuccin-cursors.nix
-    ./modules/inir.nix
+    ./modules/vicinae.nix
   ];
 
   wayland.windowManager.niri = {
