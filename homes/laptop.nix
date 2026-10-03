@@ -10,7 +10,7 @@
     ./apps/dolphin-emu.nix
     ./apps/parsec.nix
 
-    ./cli-tools/fastfetch.nix
+    ./cli-tools/fetch.nix
     ./cli-tools/git.nix
     ./cli-tools/lazygit.nix
     ./cli-tools/neovim.nix
