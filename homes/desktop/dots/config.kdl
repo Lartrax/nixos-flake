@@ -281,7 +281,6 @@ spawn-at-startup "nm-applet"
 spawn-sh-at-startup "awww img ~/nixos-flake/assets/wallpaper.webp"
 spawn-at-startup "awww-daemon"
 spawn-sh-at-startup "vicinae server"
-spawn-sh-at-startup "inir run"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -378,8 +377,8 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+Space hotkey-overlay-title="Run an Application: vicinae" repeat=false { spawn-sh "vicinae open"; }
     // Mod+Alt+L hotkey-overlay-title="Lock the Screen: inir" allow-when-locked=true { spawn-sh "inir lock activate"; }
-    Ctrl+C hotkey-overlay-title="Copy" { spawn "wl-copy"; }
-    Ctrl+V hotkey-overlay-title="Paste" { spawn "wl-paste"; }
+    // Ctrl+C hotkey-overlay-title="Copy" { spawn "wl-copy"; }
+    // Ctrl+V hotkey-overlay-title="Paste" { spawn "wl-paste"; }
     // Mod+Comma hotkey-overlay-title="Open inir settings" { spawn-sh "inir settings"; }
     // Mod+Exclam hotkey-overlay-title="Open inir cheatsheet" { spawn-sh "inir cheatsheet toggle"; }
     // Mod+Shift+G hotkey-overlay-title="Cycle inir panels" { spawn-sh "inir panelFamily cycle"; }
