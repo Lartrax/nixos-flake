@@ -8,24 +8,26 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { nixy = import ../../homes/desktop.nix; };
+    users = {
+      nixy = import ../../homes/desktop.nix;
+    };
   };
+
+  hardware.graphics.enable = true;
 
   networking.hostName = "nixos-desktop";
 
   users.users.nixy = {
     isNormalUser = true;
     description = "";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    package =
-      inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
-  };
+  programs.niri.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

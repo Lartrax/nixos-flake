@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./desktop/hyprland.nix
+    ./desktop/niri.nix
 
     ./apps/brave.nix
     ./apps/dolphin.nix
@@ -10,7 +10,7 @@
     ./apps/easyeffects.nix
     ./apps/dolphin-emu.nix
 
-    ./cli-tools/fastfetch.nix
+    ./cli-tools/fetch.nix
     ./cli-tools/git.nix
     ./cli-tools/lazygit.nix
     ./cli-tools/neovim.nix
