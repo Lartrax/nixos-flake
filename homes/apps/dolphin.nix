@@ -5,5 +5,6 @@
     kdePackages.dolphin
     kdePackages.qtsvg
     kdePackages.kio-admin
+    kdePackages.kio-extras
   ];
 }
