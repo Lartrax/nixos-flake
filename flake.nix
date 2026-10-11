@@ -51,7 +51,7 @@
                 nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
               }
             )
-            ./modules/kernels/cachyos-lto.nix
+            ./modules/kernels/cachyos-lto-zen4.nix
             ./modules/automount.nix
             ./modules/fish.nix
             ./modules/network.nix
@@ -68,7 +68,13 @@
             ./modules/fonts/monaspace.nix
             ./modules/audio.nix
             ./modules/graphics.nix
-            ./modules/kernels/linux-latest.nix
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+              }
+            )
+            ./modules/kernels/cachyos-bore-lto-x86_64-v3.nix
             ./modules/automount.nix
             ./modules/bluetooth.nix
             ./modules/gaming.nix
