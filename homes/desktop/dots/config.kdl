@@ -376,13 +376,6 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+Space hotkey-overlay-title="Run an Application: vicinae" repeat=false { spawn-sh "vicinae open"; }
-    // Mod+Alt+L hotkey-overlay-title="Lock the Screen: inir" allow-when-locked=true { spawn-sh "inir lock activate"; }
-    // Ctrl+C hotkey-overlay-title="Copy" { spawn "wl-copy"; }
-    // Ctrl+V hotkey-overlay-title="Paste" { spawn "wl-paste"; }
-    // Mod+Comma hotkey-overlay-title="Open inir settings" { spawn-sh "inir settings"; }
-    // Mod+Exclam hotkey-overlay-title="Open inir cheatsheet" { spawn-sh "inir cheatsheet toggle"; }
-    // Mod+Shift+G hotkey-overlay-title="Cycle inir panels" { spawn-sh "inir panelFamily cycle"; }
-    // Mod+Shift+S hotkey-overlay-title="Region screenshot with inir" { spawn-sh "inir region screenshot"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
