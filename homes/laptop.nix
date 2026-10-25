@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./desktop/niri.nix
+    ./desktop/mango.nix
 
     ./apps/brave.nix
     ./apps/dolphin.nix
