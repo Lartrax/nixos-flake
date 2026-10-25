@@ -48,10 +48,10 @@
       key <AC04> { [t, T, parenright] };
       key <AC05> { [b, B] };
       key <AC06> { [period, colon] };
-      key <AC07> { [a, A, h, H] };
-      key <AC08> { [e, E, j, J] };
-      key <AC09> { [i, I, k, K] };
-      key <AC10> { [h, H, l, L] };
+      key <AC07> { [a, A, Left, Left] };
+      key <AC08> { [e, E, Down, Down] };
+      key <AC09> { [i, I, Up, Up] };
+      key <AC10> { [h, H, Right, Right] };
       key <AC11> { [oslash, Ooblique] };
       key <AC12> { [exclam, question] };
 
