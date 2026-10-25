@@ -11,6 +11,6 @@
   wayland.windowManager.niri = {
     enable = true;
 
-    extraConfig = builtins.readFile ./dots/config.kdl;
+    extraConfig = builtins.readFile ./dots/niri/config.kdl;
   };
 }

@@ -7,8 +7,9 @@
     ./modules/vicinae.nix
   ];
 
-  home.file.".config/mango/config.conf" = {
-    source = ./dots/config.conf;
+  home.file.".config/mango" = {
+    source = ./dots/mango;
+    recursive = true;
   };
 
   # wayland.windowManager.mango = {

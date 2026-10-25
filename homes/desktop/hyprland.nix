@@ -21,6 +21,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    extraConfig = builtins.readFile ./dots/hyprland.lua;
+    extraConfig = builtins.readFile ./dots/hyprland/hyprland.lua;
   };
 }
