@@ -1,0 +1,31 @@
+{ ... }:
+
+{
+  imports = [
+    ./compositor/mango.nix
+
+    ./apps/brave.nix
+    ./apps/dolphin.nix
+    ./apps/foot.nix
+
+    ./cli-tools/fetch.nix
+    ./cli-tools/git.nix
+    ./cli-tools/lazygit.nix
+    ./cli-tools/neovim.nix
+    ./cli-tools/btop.nix
+
+    ./system/keyboard-layouts/hdc.nix
+  ];
+
+  home.username = "nixy";
+  home.homeDirectory = "/home/nixy";
+
+  home.stateVersion = "26.11";
+
+  programs.home-manager.enable = true;
+
+  home.file.".config" = {
+    source = ./dots/qemu;
+    recursive = true;
+  };
+}

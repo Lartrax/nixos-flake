@@ -281,6 +281,7 @@ spawn-at-startup "nm-applet"
 spawn-sh-at-startup "awww img ~/nixos-flake/assets/wallpaper.webp"
 spawn-at-startup "awww-daemon"
 spawn-sh-at-startup "vicinae server"
+spawn-sh-at-startup "foot --server"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -374,7 +375,7 @@ binds {
     Mod+Shift+Exclam { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
     Mod+Space hotkey-overlay-title="Run an Application: vicinae" repeat=false { spawn-sh "vicinae open"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
