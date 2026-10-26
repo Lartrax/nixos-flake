@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./compositor/niri.nix
+    ./compositor/mango.nix
 
     ./apps/brave.nix
     ./apps/dolphin.nix
@@ -26,4 +26,9 @@
   home.stateVersion = "26.11";
 
   programs.home-manager.enable = true;
+
+  home.file.".config" = {
+    source = ./dots/desktop;
+    recursive = true;
+  };
 }

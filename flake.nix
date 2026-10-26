@@ -11,6 +11,7 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    skwd-wall.url = "github:liixini/skwd-wall/nix";
   };
 
   outputs =
@@ -22,6 +23,7 @@
       home-manager,
       nix-minecraft,
       hyprland,
+      skwd-wall,
     }@inputs:
     let
       system = "x86_64-linux";
@@ -44,11 +46,13 @@
                 nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
               }
             )
-            ./modules/kernels/cachyos-lto-zen4.nix
+            ./modules/kernels/cachyos-bore-lto-zen4.nix
             ./modules/automount.nix
             ./modules/fish.nix
             ./modules/network.nix
             ./modules/ssh.nix
+            ./modules/skwd-wall.nix
+            ./modules/gaming.nix
           ];
         };
         laptop = nixpkgs.lib.nixosSystem {
