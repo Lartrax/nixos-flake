@@ -3,6 +3,7 @@
 {
   imports = [
     ./compositor/mango.nix
+    ./compositor/modules/awww.nix
 
     ./apps/brave.nix
     ./apps/dolphin.nix

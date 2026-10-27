@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./modules/awww.nix
     ./modules/catppuccin-cursors.nix
     ./modules/vicinae.nix
   ];
